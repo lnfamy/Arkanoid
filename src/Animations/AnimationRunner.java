@@ -9,8 +9,8 @@ import biuoop.Sleeper;
  * The type Animation runner.
  */
 public class AnimationRunner {
-    private GUI gui;
-    private int framesPerSecond;
+    private final GUI gui;
+    private final int framesPerSecond;
 
     /**
      * Instantiates a new Animation runner.

@@ -15,7 +15,7 @@ public final class Config {
             BALL_SPEED, NUM_BLOCKS, FIRST_ROW_BLOCKS, INIT_BALL_Y_PADDING,
             MID_SCREEN_W, INIT_BALL_X_PADDING, ERR_CODE, SCORE_BORDER_SIZE,
             SCORE_Y_OFFSET, SCORE_X_OFFSET, SCORE_FONT_SIZE, DEATH_REGION_S,
-            BLOCK_SCORE, CLEAR_SCORE;
+            BLOCK_SCORE, CLEAR_SCORE, CD_SEC, CD_DURATION;
 
 
     static {
@@ -69,9 +69,13 @@ public final class Config {
         INIT_BALL_X_PADDING = BLOCK_WIDTH / 2;
         BALL_SIZE = 5;
         BALL_SPEED = 8;
+
         //frames per second and milliseconds per frame
         FPS = 60;
         MILLI = 1000;
+        CD_SEC = 3;
+        CD_DURATION = 2;
+
 
         ERR_CODE = -1;
     }

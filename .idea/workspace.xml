@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b8c1b86-82ad-4b36-b39f-5e334141979e" name="Changes" comment="save">
-      <change beforePath="$PROJECT_DIR$/src/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" />
+    <list default="true" id="5b8c1b86-82ad-4b36-b39f-5e334141979e" name="Changes" comment="supposedly fixed dependencies">
+      <change afterPath="$PROJECT_DIR$/src/Animations/CountdownAnimation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GameFlow/Menus/PauseScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Animations/AnimationRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animations/AnimationRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFlow/GameManager/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameFlow/GameManager/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/Misc/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Misc/Config.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +52,6 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "A:/Compsci/Year1/SemesterB/oopJava/biuoop-1.4.jar",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -94,12 +97,27 @@
       <option name="project" value="LOCAL" />
       <updated>1686053330060</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="supposedly fixed dependencies">
+      <created>1686068430683</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1686068430683</updated>
+    </task>
+    <task id="LOCAL-00003" summary="supposedly fixed dependencies">
+      <created>1686068445491</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1686068445491</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="save" />
-    <option name="LAST_COMMIT_MESSAGE" value="save" />
+    <MESSAGE value="supposedly fixed dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="supposedly fixed dependencies" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -107,11 +125,20 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/GameTest.java</url>
           <line>11</line>
-          <properties class="GameFlow.GameTest" method="main">
+          <properties class="GameTest" method="main">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Animations/CountdownAnimation.java</url>
+          <line>46</line>
+          <properties class="Animations.CountdownAnimation" method="doOneFrame">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

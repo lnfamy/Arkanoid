@@ -2,10 +2,12 @@ package GameFlow.GameManager;
 
 import Animations.Animation;
 import Animations.AnimationRunner;
+import Animations.CountdownAnimation;
 import GameFlow.Collisions.Listeners.BallAdder;
 import GameFlow.Collisions.Listeners.BallRemover;
 import GameFlow.Collisions.Listeners.BlockRemover;
 import GameFlow.Collisions.Listeners.ScoreTrackingListener;
+import GameFlow.Menus.PauseScreen;
 import Utils.Misc.Config;
 import Sprites.Ball;
 import Sprites.Block;
@@ -348,55 +350,10 @@ public class Game implements Animation {
     /**
      * Run.
      */
-    public void oldRun() {
-        /*
-        Boolean variables for game flow control:
-        initialPause: If the game has just started, sleep for 5 seconds after
-        drawing all the sprites one time to give the player some reaction time
-        leeway.
-        finishedGame: If the game has just ended, by either all balls falling
-        (loss) or all blocks being removed (win), breaks from the game loop
-        and sleeps for 5 seconds before closing the game window.
-         */
-        boolean finishedGame = false;
-        boolean initialPause = true;
-
-        while (true) {
-            if (finishedGame) {
-                break;
-            }
-
-            DrawSurface d = g.getDrawSurface();
-            this.sprites.drawAllOn(d);
-
-            if (this.remainingBlocks.getValue() == 0) {
-                this.score.increase(Config.CLEAR_SCORE);
-                this.sprites.notifyAllTimePassed();
-                this.sprites.drawAllOn(d);
-                finishedGame = true;
-            }
-
-            if (this.remainingBalls.getValue() == 0) {
-                finishedGame = true;
-            }
-
-            g.show(d);
-            this.sprites.notifyAllTimePassed();
-
-            if (initialPause) {
-                initialPause = false;
-            }
-
-
-        }
-        g.close();
-    }
-
-    /**
-     * Run.
-     */
     public void run() {
         this.initialize();
+        this.runner.run(new CountdownAnimation(Config.CD_DURATION,
+                Config.CD_SEC, this.sprites));
         this.running = true;
         this.runner.run(this);
     }
@@ -408,21 +365,18 @@ public class Game implements Animation {
      */
     @Override
     public void doOneFrame(DrawSurface d) {
-        boolean finishedGame = false;
+        this.sprites.drawAllOn(d);
+        this.sprites.notifyAllTimePassed();
 
-        if (this.remainingBlocks.getValue() == 0) {
-            this.score.increase(Config.CLEAR_SCORE);
-            this.sprites.notifyAllTimePassed();
-            this.sprites.drawAllOn(d);
-            finishedGame = true;
-        }
-
-        if (this.remainingBalls.getValue() == 0) {
-            finishedGame = true;
-        }
+        boolean finishedGame = this.remainingBlocks.getValue() == 0
+                || this.remainingBalls.getValue() == 0;
 
         if (finishedGame) {
             this.running = false;
+        }
+
+        if (this.keyboard.isPressed("p")) {
+            this.runner.run(new PauseScreen(this.keyboard));
         }
 
     }
