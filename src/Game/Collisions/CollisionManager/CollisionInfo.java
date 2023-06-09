@@ -1,4 +1,4 @@
-package GameFlow.Collisions.CollisionManager;
+package Game.Collisions.CollisionManager;
 
 import Utils.Geometry.Point;
 

@@ -1,4 +1,4 @@
-package GameFlow.Collisions.Listeners;
+package Game.Collisions.Listeners;
 
 import Utils.Misc.Config;
 import Utils.Misc.Counter;

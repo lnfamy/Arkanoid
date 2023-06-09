@@ -1,6 +1,6 @@
-package GameFlow.Collisions.Listeners;
+package Game.Collisions.Listeners;
 
-import GameFlow.GameManager.Game;
+import Game.GameManager.GameLevel;
 import Utils.Geometry.Velocity;
 import Sprites.Ball;
 import Sprites.Block;
@@ -11,7 +11,7 @@ import Utils.Misc.Counter;
  * The type Ball adder.
  */
 public class BallAdder implements HitListener {
-    private final Game game;
+    private final GameLevel game;
     private final Counter remainingBalls;
 
     /**
@@ -20,7 +20,7 @@ public class BallAdder implements HitListener {
      * @param game     the game
      * @param remBalls the remaining balls in the game
      */
-    public BallAdder(Game game, Counter remBalls) {
+    public BallAdder(GameLevel game, Counter remBalls) {
         this.game = game;
         this.remainingBalls = remBalls;
     }

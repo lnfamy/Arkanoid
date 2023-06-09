@@ -1,4 +1,4 @@
-package GameFlow.Collisions.Listeners;
+package Game.Collisions.Listeners;
 
 import Sprites.Ball;
 import Sprites.Block;

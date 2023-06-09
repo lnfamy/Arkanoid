@@ -1,7 +1,7 @@
-import GameFlow.GameManager.Game;
+import Game.GameManager.GameLevel;
 
 /**
- * The type Game test.
+ * The type GameLevel test.
  */
 public class GameTest {
     /**
@@ -10,7 +10,7 @@ public class GameTest {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        Game game = new Game();
+        GameLevel game = new GameLevel();
         game.run();
     }
 }

@@ -1,19 +1,19 @@
-package GameFlow.GameManager;
+package Game.GameManager;
 
 import Animations.Animation;
 import Animations.AnimationRunner;
 import Animations.CountdownAnimation;
-import GameFlow.Collisions.Listeners.BallAdder;
-import GameFlow.Collisions.Listeners.BallRemover;
-import GameFlow.Collisions.Listeners.BlockRemover;
-import GameFlow.Collisions.Listeners.ScoreTrackingListener;
-import GameFlow.Menus.PauseScreen;
+import Game.Collisions.Listeners.BallAdder;
+import Game.Collisions.Listeners.BallRemover;
+import Game.Collisions.Listeners.BlockRemover;
+import Game.Collisions.Listeners.ScoreTrackingListener;
+import Game.Menus.PauseScreen;
 import Utils.Misc.Config;
 import Sprites.Ball;
 import Sprites.Block;
 import Sprites.Paddle;
 
-import GameFlow.Collisions.CollisionManager.Collidable;
+import Game.Collisions.CollisionManager.Collidable;
 import Utils.Geometry.Rectangle;
 import Utils.Geometry.Velocity;
 import Sprites.Sprite;
@@ -25,13 +25,13 @@ import java.awt.Color;
 import java.util.Random;
 
 /**
- * The type Game.
+ * The type GameLevel.
  */
-public class Game implements Animation {
+public class GameLevel implements Animation {
     private final SpriteCollection sprites = new SpriteCollection();
     private final GameEnvironment environment = new GameEnvironment();
     private final GUI g = new GUI("Arkanoid", Config.WIN_WIDTH,
-            Config.WINDOW_HEIGHT);
+            Config.WIN_HEIGHT);
     private final biuoop.KeyboardSensor keyboard = g.getKeyboardSensor();
     private final Counter remainingBlocks = new Counter();
     private final Counter remainingBalls = new Counter();
@@ -62,7 +62,7 @@ public class Game implements Animation {
     /**
      * Gets environment GameEnvironment.
      *
-     * @return this Game object's GameEnvironment.
+     * @return this GameLevel object's GameEnvironment.
      */
     public GameEnvironment getEnvironment() {
         return this.environment;
@@ -108,9 +108,10 @@ public class Game implements Animation {
         initDeathRegion(ballRemover);
 
         //initializing background, score sprite, blocks, paddle and balls
-        initBg();
+        //initBg();
+        initBgTest();
         initScoreBoard();
-        initBlocks(blockRemover, ballRemover, ballAdder, sc);
+//        initBlocks(blockRemover, ballRemover, ballAdder, sc);
         initPaddle();
         initBalls();
 
@@ -127,12 +128,12 @@ public class Game implements Animation {
         prevent collisions with the background
         */
         Block background = new Block(0, 0, Config.WIN_WIDTH,
-                Config.WINDOW_HEIGHT, Config.BG_CLR);
+                Config.WIN_HEIGHT, Config.BG_CLR);
         this.addSprite(background);
 
         Color borderColor = Config.BORDER_CLR;
         int width = Config.WIN_WIDTH,
-                height = Config.WINDOW_HEIGHT,
+                height = Config.WIN_HEIGHT,
                 size = Config.BORDER_SIZE,
                 upperOffset = Config.SCORE_BORDER_SIZE;
 
@@ -153,6 +154,13 @@ public class Game implements Animation {
         for (Block b : borders) {
             b.addToGame(this);
         }
+    }
+
+    /**
+     * Init bg test.
+     */
+    public void initBgTest() {
+        this.addSprite();
     }
 
     /**
@@ -179,7 +187,7 @@ public class Game implements Animation {
      */
     public void initDeathRegion(BallRemover ballRemover) {
         Block deathRegion = new Block(0,
-                Config.WINDOW_HEIGHT + Config.BALL_SIZE,
+                Config.WIN_HEIGHT + Config.BALL_SIZE,
                 Config.WIN_WIDTH, Config.BORDER_SIZE,
                 Config.BG_CLR);
         deathRegion.addToGame(this);
@@ -296,7 +304,7 @@ public class Game implements Animation {
     public void initPaddle() {
         //to place the paddle in the middle of the screen
         double x = Config.WIN_WIDTH / 2.0 - Config.PADDLE_W / 2.0;
-        double y = Config.WINDOW_HEIGHT - Config.BORDER_SIZE - Config.PADDLE_H;
+        double y = Config.WIN_HEIGHT - Config.BORDER_SIZE - Config.PADDLE_H;
         Rectangle rect = new Rectangle(x, y, Config.PADDLE_W, Config.PADDLE_H);
 
         Paddle paddle = new Paddle(rect, Config.PADDLE_CLR, this.keyboard);
@@ -310,7 +318,7 @@ public class Game implements Animation {
      */
     public void initBalls() {
         double genX = Config.MID_SCREEN_W;
-        double y = Config.WINDOW_HEIGHT - Config.BORDER_SIZE
+        double y = Config.WIN_HEIGHT - Config.BORDER_SIZE
                 - Config.PADDLE_H * Config.INIT_BALL_Y_PADDING;
         Ball[] balls = new Ball[]{
                 new Ball(genX, y, Config.BALL_SIZE, Config.BALL_CLR),

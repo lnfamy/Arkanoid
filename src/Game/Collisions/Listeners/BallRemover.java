@@ -1,7 +1,7 @@
-package GameFlow.Collisions.Listeners;
+package Game.Collisions.Listeners;
 
 import Utils.Misc.Counter;
-import GameFlow.GameManager.Game;
+import Game.GameManager.GameLevel;
 import Sprites.Ball;
 import Sprites.Block;
 
@@ -9,7 +9,7 @@ import Sprites.Block;
  * The type Ball remover.
  */
 public class BallRemover implements HitListener {
-    private final Game game;
+    private final GameLevel game;
     private final Counter remainingBalls;
 
     /**
@@ -18,7 +18,7 @@ public class BallRemover implements HitListener {
      * @param game           the game
      * @param remainingBalls the remaining balls in the game
      */
-    public BallRemover(Game game, Counter remainingBalls) {
+    public BallRemover(GameLevel game, Counter remainingBalls) {
         this.game = game;
         this.remainingBalls = remainingBalls;
     }

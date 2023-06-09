@@ -1,4 +1,4 @@
-package GameFlow.GameManager;
+package Game.GameManager;
 
 import Sprites.Sprite;
 import biuoop.DrawSurface;

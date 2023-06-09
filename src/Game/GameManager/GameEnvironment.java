@@ -1,7 +1,7 @@
-package GameFlow.GameManager;
+package Game.GameManager;
 
-import GameFlow.Collisions.CollisionManager.Collidable;
-import GameFlow.Collisions.CollisionManager.CollisionInfo;
+import Game.Collisions.CollisionManager.Collidable;
+import Game.Collisions.CollisionManager.CollisionInfo;
 import Utils.Geometry.Line;
 import Utils.Geometry.Point;
 
@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The type Game environment.
+ * The type GameLevel environment.
  */
 public class GameEnvironment {
     private final java.util.List<Collidable> collidables;
 
     /**
-     * Instantiates a new GameFlow.GameManager.Game environment.
+     * Instantiates a new GameFlow.GameManager.GameLevel environment.
      * Creates a new empty array list of collidable objects. (chose array
      * list because array lists are better for storage and reading rather
      * than manipulating data)

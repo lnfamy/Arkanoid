@@ -6,16 +6,26 @@ import java.awt.Color;
  * The type Config. Defines various constants used all throughout the project.
  */
 public final class Config {
-    public static final Color[] COLORS;
+    public static final Color[] COLORS, GREEN_3_COLORS, DIRECT_HIT_COLORS;
     public static final Color BORDER_CLR, PADDLE_CLR, BG_CLR, DARK_BLUE,
             BALL_CLR, SCORE_BORDER_CLR, K_B, S_B;
-    public static final int WIN_WIDTH, WINDOW_HEIGHT, FPS, MILLI,
-            NUM_BORDERS, BORDER_SIZE, FIRST_ROW_Y, BLOCK_WIDTH, BLOCK_HEIGHT,
-            NUM_ROWS, BLOCKS_IN_ROW, PADDLE_W, PADDLE_H, BALL_SIZE,
-            BALL_SPEED, NUM_BLOCKS, FIRST_ROW_BLOCKS, INIT_BALL_Y_PADDING,
-            MID_SCREEN_W, INIT_BALL_X_PADDING, ERR_CODE, SCORE_BORDER_SIZE,
-            SCORE_Y_OFFSET, SCORE_X_OFFSET, SCORE_FONT_SIZE, DEATH_REGION_S,
-            BLOCK_SCORE, CLEAR_SCORE, CD_SEC, CD_DURATION;
+    public static final int
+            WIN_WIDTH, WIN_HEIGHT,
+            FPS, MILLI,
+            NUM_BORDERS, BORDER_SIZE,
+            FIRST_ROW_Y, NUM_ROWS,
+            BLOCK_WIDTH, BLOCK_HEIGHT, BLOCKS_IN_ROW,
+            NUM_BLOCKS, FIRST_ROW_BLOCKS,
+            PADDLE_W, PADDLE_H,
+            BALL_SIZE, BALL_SPEED, INIT_BALL_X_PADDING, INIT_BALL_Y_PADDING,
+            MID_SCREEN_W, ERR_CODE,
+            SCORE_BORDER_SIZE, SCORE_Y_OFFSET, SCORE_X_OFFSET, SCORE_FONT_SIZE,
+            BLOCK_SCORE, CLEAR_SCORE,
+            DEATH_REGION_S,
+            CD_SEC, CD_DURATION, CD_X, CD_Y_OFFSET, CD_SHDW_OFFSET, CD_SIZE,
+            CD_SHDW_SIZE;
+
+    public static final int DH_CENTER_Y, DH_R1;
 
 
     static {
@@ -36,8 +46,24 @@ public final class Config {
         S_B = new Color(143, 197, 225);
         BALL_CLR = Color.white;
 
+        GREEN_3_COLORS = new Color[]{
+                new Color(197, 255, 218),
+                new Color(127, 202, 137),
+                new Color(77, 155, 114),
+                new Color(0, 82, 79),
+                new Color(0, 38, 44),
+                new Color(0, 4, 11)
+        };
+
+        DIRECT_HIT_COLORS = new Color[]{
+                new Color(0, 9, 35), //dark blue
+                new Color(163, 0, 0), // red
+                new Color(242, 170, 92), //bright yellow
+                new Color(214, 171, 116) //muted yellow
+        };
+
         WIN_WIDTH = 800;
-        WINDOW_HEIGHT = 600;
+        WIN_HEIGHT = 600;
 
         MID_SCREEN_W = WIN_WIDTH / 2;
 
@@ -75,7 +101,15 @@ public final class Config {
         MILLI = 1000;
         CD_SEC = 3;
         CD_DURATION = 2;
+        CD_X = 330;
+        CD_Y_OFFSET = 100;
+        CD_SHDW_OFFSET = 105;
+        CD_SIZE = 250;
+        CD_SHDW_SIZE = 270;
 
+        //direct hit constants
+        DH_CENTER_Y = 190;
+        DH_R1 = DH_CENTER_Y - 30;
 
         ERR_CODE = -1;
     }

@@ -1,12 +1,12 @@
 package Sprites;
 
-import GameFlow.Collisions.CollisionManager.Collidable;
-import GameFlow.GameManager.Game;
+import Game.Collisions.CollisionManager.Collidable;
+import Game.GameManager.GameLevel;
 import Utils.Geometry.Point;
 import Utils.Geometry.Rectangle;
 import Utils.Geometry.Velocity;
-import GameFlow.Collisions.Listeners.HitListener;
-import GameFlow.Collisions.Listeners.HitNotifier;
+import Game.Collisions.Listeners.HitListener;
+import Game.Collisions.Listeners.HitNotifier;
 import biuoop.DrawSurface;
 
 import java.awt.Color;
@@ -59,7 +59,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
      *
      * @param g the game
      */
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.getEnvironment().addCollidable(this);
         g.getSprites().addSprite(this);
     }
@@ -69,7 +69,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
      *
      * @param game the game this block is to be removed from.
      */
-    public void removeFromGame(Game game) {
+    public void removeFromGame(GameLevel game) {
         game.removeCollidable(this);
         game.removeSprite(this);
     }

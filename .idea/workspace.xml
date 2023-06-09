@@ -4,12 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b8c1b86-82ad-4b36-b39f-5e334141979e" name="Changes" comment="supposedly fixed dependencies">
-      <change afterPath="$PROJECT_DIR$/src/Animations/CountdownAnimation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GameFlow/Menus/PauseScreen.java" afterDir="false" />
+    <list default="true" id="5b8c1b86-82ad-4b36-b39f-5e334141979e" name="Changes" comment="added countdown animation">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Levels/DirectHit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Levels/Green3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Levels/LevelInformation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Levels/WideEasy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Animations/AnimationRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animations/AnimationRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameFlow/GameManager/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameFlow/GameManager/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Animations/CountdownAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animations/CountdownAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFlow/Collisions/CollisionManager/Collidable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Collisions/CollisionManager/Collidable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFlow/Collisions/CollisionManager/CollisionInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Collisions/CollisionManager/CollisionInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFlow/Collisions/Listeners/BallAdder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Collisions/Listeners/BallAdder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFlow/Collisions/Listeners/BallRemover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Collisions/Listeners/BallRemover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFlow/Collisions/Listeners/BlockRemover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Collisions/Listeners/BlockRemover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFlow/Collisions/Listeners/HitListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Collisions/Listeners/HitListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFlow/Collisions/Listeners/HitNotifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Collisions/Listeners/HitNotifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFlow/Collisions/Listeners/ScoreTrackingListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Collisions/Listeners/ScoreTrackingListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFlow/GameManager/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameManager/GameLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFlow/GameManager/GameEnvironment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameManager/GameEnvironment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFlow/GameManager/ScoreIndicator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameManager/ScoreIndicator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFlow/GameManager/SpriteCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameManager/SpriteCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFlow/Menus/PauseScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Menus/PauseScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sprites/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sprites/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sprites/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sprites/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sprites/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sprites/Paddle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/Misc/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Misc/Config.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,11 +47,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -52,30 +71,19 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "A:/Compsci/Year1/SemesterB/oopJava/biuoop-1.4.jar",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "org.infernus.idea.checkstyle.CheckStyleConfigurable"
+    "settings.editor.selected.configurable": "preferences.sourceCode"
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="GameTest" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="GameTest" />
       <module name="ass6" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="ass6" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="ass6" />
-      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -111,13 +119,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686068445491</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added countdown animation">
+      <created>1686074427710</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1686074427710</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="save" />
     <MESSAGE value="supposedly fixed dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="supposedly fixed dependencies" />
+    <MESSAGE value="added countdown animation" />
+    <option name="LAST_COMMIT_MESSAGE" value="added countdown animation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -133,7 +149,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Animations/CountdownAnimation.java</url>
-          <line>46</line>
+          <line>45</line>
           <properties class="Animations.CountdownAnimation" method="doOneFrame">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -142,5 +158,8 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ass6$GameTest.ic" NAME="GameTest Coverage Results" MODIFIED="1686241477774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

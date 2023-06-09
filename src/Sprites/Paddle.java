@@ -1,6 +1,6 @@
 package Sprites;
 
-import GameFlow.GameManager.Game;
+import Game.GameManager.GameLevel;
 import Utils.Geometry.Point;
 import Utils.Geometry.Rectangle;
 import Utils.Geometry.Velocity;
@@ -78,7 +78,7 @@ public class Paddle extends Block implements Sprite {
      *
      * @param g the game.
      */
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.addCollidable(this);
         g.addSprite(this);
     }

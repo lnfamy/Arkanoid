@@ -1,4 +1,4 @@
-package GameFlow.GameManager;
+package Game.GameManager;
 
 import Utils.Geometry.Rectangle;
 import Sprites.Sprite;
@@ -64,7 +64,7 @@ public class ScoreIndicator implements Sprite {
      *
      * @param game the game
      */
-    public void addToGame(Game game) {
+    public void addToGame(GameLevel game) {
         game.addSprite(this);
     }
 }

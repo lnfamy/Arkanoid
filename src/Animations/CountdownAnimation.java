@@ -1,23 +1,22 @@
 package Animations;
 
-import GameFlow.GameManager.SpriteCollection;
+import Game.GameManager.SpriteCollection;
 import Utils.Misc.Config;
 import Utils.Misc.Counter;
 import biuoop.DrawSurface;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * The type Countdown animation.
  */
 public class CountdownAnimation implements Animation {
-    private double numOfSeconds;
-    private int countFrom;
-    private SpriteCollection gameScreen;
+    private final double numOfSeconds;
+    private final int countFrom;
+    private final SpriteCollection gameScreen;
     private boolean stop;
-    private int countUntil = 1;
     private double secondsRemaining;
-    private Counter currentNum;
+    private final Counter currentNum;
 
     /**
      * Instantiates a new Countdown animation.
@@ -47,14 +46,14 @@ public class CountdownAnimation implements Animation {
     public void doOneFrame(DrawSurface d) {
         this.gameScreen.drawAllOn(d);
 
-        //mimicking a shadow behind the number for visibility purposes
+        //mimicking a shadow effect behind the number for visibility purposes
         d.setColor(Color.BLACK);
-        d.drawText(330, d.getHeight() / 2 + 105,
-                String.valueOf(currentNum.getValue()), 270);
+        d.drawText(Config.CD_X, d.getHeight() / 2 + Config.CD_SHDW_OFFSET,
+                String.valueOf(currentNum.getValue()), Config.CD_SHDW_SIZE);
 
         d.setColor(Color.WHITE);
-        d.drawText(330, d.getHeight() / 2 + 100,
-                String.valueOf(currentNum.getValue()), 250);
+        d.drawText(Config.CD_X, d.getHeight() / 2 + Config.CD_Y_OFFSET,
+                String.valueOf(currentNum.getValue()), Config.CD_SIZE);
 
         //subtracting 1/60 to deduct one frame for each call
         this.secondsRemaining -= 1.0 / Config.FPS;

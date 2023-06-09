@@ -1,4 +1,4 @@
-package GameFlow.Menus;
+package Game.Menus;
 
 import Animations.Animation;
 import biuoop.DrawSurface;

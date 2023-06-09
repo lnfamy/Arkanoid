@@ -1,8 +1,8 @@
 package Sprites;
 
-import GameFlow.Collisions.CollisionManager.CollisionInfo;
-import GameFlow.GameManager.Game;
-import GameFlow.GameManager.GameEnvironment;
+import Game.Collisions.CollisionManager.CollisionInfo;
+import Game.GameManager.GameLevel;
+import Game.GameManager.GameEnvironment;
 import Utils.Geometry.Line;
 import Utils.Geometry.Point;
 import Utils.Geometry.Rectangle;
@@ -63,7 +63,7 @@ public class Ball implements Sprite {
      *
      * @param g the game this ball is to be added to.
      */
-    public void addToGame(Game g) {
+    public void addToGame(GameLevel g) {
         g.addSprite(this);
     }
 
@@ -72,7 +72,7 @@ public class Ball implements Sprite {
      *
      * @param game the game this ball is to be removed from.
      */
-    public void removeFromGame(Game game) {
+    public void removeFromGame(GameLevel game) {
         game.removeSprite(this);
     }
 

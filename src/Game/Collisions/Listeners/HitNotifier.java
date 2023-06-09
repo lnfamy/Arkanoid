@@ -1,4 +1,4 @@
-package GameFlow.Collisions.Listeners;
+package Game.Collisions.Listeners;
 
 /**
  * The interface Hit notifier.
