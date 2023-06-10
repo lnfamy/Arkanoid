@@ -7,6 +7,9 @@ import Game.Collisions.Listeners.BallAdder;
 import Game.Collisions.Listeners.BallRemover;
 import Game.Collisions.Listeners.BlockRemover;
 import Game.Collisions.Listeners.ScoreTrackingListener;
+import Game.Levels.DirectHit;
+import Game.Levels.Green3;
+import Game.Levels.WideEasy;
 import Game.Menus.PauseScreen;
 import Utils.Misc.Config;
 import Sprites.Ball;
@@ -160,7 +163,10 @@ public class GameLevel implements Animation {
      * Init bg test.
      */
     public void initBgTest() {
-        this.addSprite();
+        DirectHit dh = new DirectHit();
+        Green3 g = new Green3();
+        WideEasy w = new WideEasy();
+        this.addSprite(w.getBackground());
     }
 
     /**

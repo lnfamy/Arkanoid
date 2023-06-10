@@ -6,7 +6,8 @@ import java.awt.Color;
  * The type Config. Defines various constants used all throughout the project.
  */
 public final class Config {
-    public static final Color[] COLORS, GREEN_3_COLORS, DIRECT_HIT_COLORS;
+    public static final Color[] COLORS, GREEN_3_COLORS, DIRECT_HIT_COLORS,
+            WIDE_EASY_COLORS;
     public static final Color BORDER_CLR, PADDLE_CLR, BG_CLR, DARK_BLUE,
             BALL_CLR, SCORE_BORDER_CLR, K_B, S_B;
     public static final int
@@ -26,6 +27,7 @@ public final class Config {
             CD_SHDW_SIZE;
 
     public static final int DH_CENTER_Y, DH_R1;
+    public static final int WE_NUM_STARS = 50;
 
 
     static {
@@ -60,6 +62,21 @@ public final class Config {
                 new Color(163, 0, 0), // red
                 new Color(242, 170, 92), //bright yellow
                 new Color(214, 171, 116) //muted yellow
+        };
+
+        WIDE_EASY_COLORS = new Color[]{
+                new Color(156, 74, 210), // background gradients:
+                new Color(156, 71, 205),
+                new Color(157, 69, 192),
+                new Color(158, 67, 186),
+                new Color(70, 0, 122), // background city
+                new Color(93, 19, 142), // bg city windows
+                Color.black, // foreground city
+                new Color(91, 91, 91), // foreground city windows
+                new Color(252, 213, 138), // lit windows
+                new Color(168, 95, 218), // biggest moon highlight
+                new Color(196, 151, 224), // second moon highlight
+                new Color(241, 219, 255) // moon
         };
 
         WIN_WIDTH = 800;
