@@ -20,7 +20,6 @@ public class WideEasy implements LevelInformation {
      */
     private final int[] x = new int[Config.WE_NUM_STARS];
     private final int[] y = new int[Config.WE_NUM_STARS];
-    private final int numBalls = 10;
     private final int numBlocks = 15;
 
     /**
@@ -36,7 +35,7 @@ public class WideEasy implements LevelInformation {
 
     @Override
     public int numberOfBalls() {
-        return this.numBalls;
+        return Config.WE_NUM_BALLS;
     }
 
     /**
@@ -46,7 +45,17 @@ public class WideEasy implements LevelInformation {
      */
     @Override
     public List<Velocity> initialBallVelocities() {
-        return null;
+        ArrayList<Velocity> velocities = new ArrayList<>();
+        int ballsFirstHalf = Config.WE_NUM_BALLS / 2;
+        for (int i = 0; i < ballsFirstHalf; i++) {
+            velocities.add(Velocity.fromAngleAndSpeed(
+                    Config.ANGLE_DOWN + i * 5, Config.BALL_SPEED));
+        }
+        for (int i = ballsFirstHalf; i < Config.WE_NUM_BALLS; i++) {
+            velocities.add(Velocity.fromAngleAndSpeed(
+                    Config.ANGLE_DOWN - i * 5, Config.BALL_SPEED));
+        }
+        return velocities;
     }
 
     /**

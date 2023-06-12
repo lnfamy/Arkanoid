@@ -26,9 +26,11 @@ public final class Config {
             CD_SEC, CD_DURATION, CD_X, CD_Y_OFFSET, CD_SHDW_OFFSET, CD_SIZE,
             CD_SHDW_SIZE;
 
+    public static final int ANGLE_DOWN = 0;
+
     public static final int DH_CENTER_Y, DH_R1, DH_BLOCK_SIZE, DH_NUM_BLOCKS,
             DH_NUM_BALLS;
-    public static final int WE_NUM_STARS, WE_BALLS, WE_NUM_BLOCKS, WE_PADDLE;
+    public static final int WE_NUM_STARS, WE_NUM_BALLS, WE_NUM_BLOCKS, WE_PADDLE;
 
 
     static {
@@ -135,7 +137,7 @@ public final class Config {
         //Wide Easy constants
         WE_NUM_STARS = 50;
         WE_NUM_BLOCKS = 15;
-        WE_BALLS = 10;
+        WE_NUM_BALLS = 10;
         WE_PADDLE = 600;
 
         ERR_CODE = -1;

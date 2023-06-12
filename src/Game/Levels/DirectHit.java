@@ -27,15 +27,15 @@ public class DirectHit implements LevelInformation {
     /**
      * Initial ball velocities list.
      * DirectHit's override: Only one ball in this level, hence there being
-     * only one velocity. Ball goes straight towards the target, therefore
-     * its degree of movement is 0 (0 being upwards).
+     * only one velocity.
      *
      * @return the list
      */
     @Override
     public List<Velocity> initialBallVelocities() {
         ArrayList<Velocity> velocities = new ArrayList<>();
-        velocities.add(Velocity.fromAngleAndSpeed(0, Config.BALL_SPEED));
+        velocities.add(Velocity.fromAngleAndSpeed(Config.ANGLE_DOWN,
+                Config.BALL_SPEED));
         return velocities;
     }
 
@@ -177,6 +177,6 @@ public class DirectHit implements LevelInformation {
      */
     @Override
     public int numberOfBlocksToRemove() {
-        return Config.DH_NUM_BLOCKS;
+        return blocks().size();
     }
 }
