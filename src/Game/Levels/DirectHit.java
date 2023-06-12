@@ -7,6 +7,7 @@ import Utils.Misc.Config;
 import biuoop.DrawSurface;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,17 +21,22 @@ public class DirectHit implements LevelInformation {
      */
     @Override
     public int numberOfBalls() {
-        return 0;
+        return Config.DH_NUM_BALLS;
     }
 
     /**
      * Initial ball velocities list.
+     * DirectHit's override: Only one ball in this level, hence there being
+     * only one velocity. Ball goes straight towards the target, therefore
+     * its degree of movement is 0 (0 being upwards).
      *
      * @return the list
      */
     @Override
     public List<Velocity> initialBallVelocities() {
-        return null;
+        ArrayList<Velocity> velocities = new ArrayList<>();
+        velocities.add(Velocity.fromAngleAndSpeed(0, Config.BALL_SPEED));
+        return velocities;
     }
 
     /**
@@ -40,7 +46,7 @@ public class DirectHit implements LevelInformation {
      */
     @Override
     public int paddleSpeed() {
-        return 0;
+        return 5;
     }
 
     /**
@@ -50,7 +56,7 @@ public class DirectHit implements LevelInformation {
      */
     @Override
     public int paddleWidth() {
-        return 0;
+        return Config.PADDLE_W;
     }
 
     /**
@@ -60,7 +66,7 @@ public class DirectHit implements LevelInformation {
      */
     @Override
     public String levelName() {
-        return null;
+        return "Direct Hit";
     }
 
     /**
@@ -158,7 +164,10 @@ public class DirectHit implements LevelInformation {
      */
     @Override
     public List<Block> blocks() {
-        return null;
+        ArrayList<Block> blocks = new ArrayList<>();
+        blocks.add(new Block(Config.MID_SCREEN_W, Config.DH_CENTER_Y,
+                Config.DH_BLOCK_SIZE, Config.DH_BLOCK_SIZE, Color.RED));
+        return blocks;
     }
 
     /**
@@ -168,6 +177,6 @@ public class DirectHit implements LevelInformation {
      */
     @Override
     public int numberOfBlocksToRemove() {
-        return 0;
+        return Config.DH_NUM_BLOCKS;
     }
 }
