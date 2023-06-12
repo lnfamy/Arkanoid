@@ -15,8 +15,8 @@ public class GameFlow {
     /**
      * Instantiates a new Game flow.
      *
-     * @param ar the ar
-     * @param ks the ks
+     * @param ar the animation runner
+     * @param ks the keyboard sensor
      */
     public GameFlow(AnimationRunner ar, KeyboardSensor ks) {
         this.runner = ar;

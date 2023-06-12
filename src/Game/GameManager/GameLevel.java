@@ -227,10 +227,10 @@ public class GameLevel implements Animation {
      */
     public void initBlocks(BlockRemover blockRemover, BallRemover ballRemover,
                            BallAdder ballAdder, ScoreTrackingListener score) {
-        Block[][] blocks = new Block[Config.NUM_ROWS][Config.BLOCKS_IN_ROW];
+        Block[][] blocks = new Block[Config.G3_NUM_ROWS][Config.G3_BLOCKS_IN_ROW];
         int blockW = Config.BLOCK_WIDTH, blockH = Config.BLOCK_HEIGHT;
         int initHeight = Config.FIRST_ROW_Y;
-        int blocksInRow = Config.FIRST_ROW_BLOCKS;
+        int blocksInRow = Config.G3_FIRST_ROW_BLOCKS;
 
         /*
         Killer block / special block implementation:
@@ -243,10 +243,10 @@ public class GameLevel implements Animation {
         are initialized.
          */
         Random rand = new Random();
-        int kBlockI = (int) rand.nextDouble(Config.NUM_ROWS);
+        int kBlockI = (int) rand.nextDouble(Config.G3_NUM_ROWS);
         int kBlockJ = -1;
 
-        int sBlockI = (int) rand.nextDouble(Config.NUM_ROWS);
+        int sBlockI = (int) rand.nextDouble(Config.G3_NUM_ROWS);
         int sBlockJ = -1;
 
         /*
@@ -256,7 +256,7 @@ public class GameLevel implements Animation {
         where the inner loop is responsible for the columns.
         */
         double y = initHeight;
-        for (int i = 0; i < Config.NUM_ROWS; i++) {
+        for (int i = 0; i < Config.G3_NUM_ROWS; i++) {
             /*
             For each inner loop iteration, j goes from blocksInRow to 0. Once
              the inner loop is done, blocksInRow is decremented by 1 to
@@ -297,7 +297,7 @@ public class GameLevel implements Animation {
                     sBlockJ = -1;
                 } else {
                     blocks[i][j] = new Block(x, y, blockW,
-                            blockH, Config.COLORS[i]);
+                            blockH, Config.BLOCK_COLORS[i]);
                 }
                 //all blocks have a blockRemover and score listener
                 blocks[i][j].addHitListener(blockRemover);
@@ -311,7 +311,7 @@ public class GameLevel implements Animation {
         }
 
         //setting game blocks counter to initial value
-        this.remainingBlocks.increase(Config.NUM_BLOCKS);
+        this.remainingBlocks.increase(Config.G3_NUM_BLOCKS);
     }
 
     /**

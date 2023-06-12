@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b8c1b86-82ad-4b36-b39f-5e334141979e" name="Changes" comment="Implemented inherited methods for DirectHit">
+    <list default="true" id="5b8c1b86-82ad-4b36-b39f-5e334141979e" name="Changes" comment="Implemented inherited methods for WideEasy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Levels/DirectHit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Levels/DirectHit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Levels/WideEasy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Levels/WideEasy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/GameManager/GameLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameManager/GameLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Levels/Green3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Levels/Green3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/Misc/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Misc/Config.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +83,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1686047561640</updated>
-      <workItem from="1686591094962" duration="2683000" />
+      <workItem from="1686591094962" duration="4507000" />
     </task>
     <task id="LOCAL-00001" summary="save">
       <created>1686053330060</created>
@@ -134,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686593136517</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Implemented inherited methods for WideEasy">
+      <created>1686593880799</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1686593880799</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,7 +154,8 @@
     <MESSAGE value="made backgrounds: direct hit, green 3" />
     <MESSAGE value="all backgrounds finished" />
     <MESSAGE value="Implemented inherited methods for DirectHit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented inherited methods for DirectHit" />
+    <MESSAGE value="Implemented inherited methods for WideEasy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented inherited methods for WideEasy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -163,7 +171,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Game/Levels/WideEasy.java</url>
-          <line>100</line>
+          <line>99</line>
           <properties method="drawOn">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -181,7 +189,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Game/Levels/WideEasy.java</url>
-          <line>98</line>
+          <line>97</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

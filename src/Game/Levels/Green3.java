@@ -6,7 +6,9 @@ import Utils.Geometry.Velocity;
 import Utils.Misc.Config;
 import biuoop.DrawSurface;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * The type Green 3.
@@ -19,7 +21,7 @@ public class Green3 implements LevelInformation {
      */
     @Override
     public int numberOfBalls() {
-        return 0;
+        return Config.G3_NUM_BALLS;
     }
 
     /**
@@ -29,17 +31,23 @@ public class Green3 implements LevelInformation {
      */
     @Override
     public List<Velocity> initialBallVelocities() {
-        return null;
+        ArrayList<Velocity> velocities = new ArrayList<>();
+        for (int i = 0; i < Config.G3_NUM_BALLS; i++) {
+            velocities.add(Velocity.fromAngleAndSpeed(Config.ANGLE_DOWN,
+                    Config.BALL_SPEED));
+        }
+        return velocities;
     }
 
     /**
      * Paddle speed int.
+     * double the default paddle speed.
      *
      * @return the int
      */
     @Override
     public int paddleSpeed() {
-        return 0;
+        return 10;
     }
 
     /**
@@ -49,7 +57,7 @@ public class Green3 implements LevelInformation {
      */
     @Override
     public int paddleWidth() {
-        return 0;
+        return Config.PADDLE_W;
     }
 
     /**
@@ -59,7 +67,7 @@ public class Green3 implements LevelInformation {
      */
     @Override
     public String levelName() {
-        return null;
+        return "Green 3";
     }
 
     /**
@@ -211,7 +219,41 @@ public class Green3 implements LevelInformation {
      */
     @Override
     public List<Block> blocks() {
-        return null;
+        ArrayList<Block> blocks = new ArrayList<>();
+        int blockW = Config.BLOCK_WIDTH, blockH = Config.BLOCK_HEIGHT;
+
+        Random rand = new Random();
+        int kBlockI = (int) rand.nextDouble(Config.G3_NUM_ROWS);
+        int kBlockJ = -1;
+
+        int sBlockI = (int) rand.nextDouble(Config.G3_NUM_ROWS);
+        int sBlockJ = -1;
+
+        int y = Config.FIRST_ROW_Y;
+
+        for (int i = 0; i < Config.G3_NUM_ROWS; i++) {
+            if (i == kBlockI) {
+                kBlockJ = (int) rand.nextDouble(
+                        Config.G3_BLOCKS_IN_ROW - i);
+            }
+            if (i == sBlockI) {
+                sBlockJ = (int) rand.nextDouble(
+                        Config.G3_BLOCKS_IN_ROW - i);
+                if (kBlockI == sBlockI) {
+                    while (kBlockJ == sBlockJ) {
+                        sBlockJ = (int) rand.nextDouble(
+                                Config.G3_BLOCKS_IN_ROW - i);
+                    }
+                }
+            }
+            for (int j = 0; j < Config.G3_BLOCKS_IN_ROW - i; j++) {
+                int x = Config.WIN_WIDTH - Config.BORDER_SIZE - blockW * j;
+                Block b = new Block(x, y + i * blockH, blockW, blockH,
+                        Config.BLOCK_COLORS[i % Config.BLOCK_COLORS.length]);
+                blocks.add(b);
+            }
+        }
+        return blocks;
     }
 
     /**
@@ -221,6 +263,6 @@ public class Green3 implements LevelInformation {
      */
     @Override
     public int numberOfBlocksToRemove() {
-        return 0;
+        return blocks().size();
     }
 }

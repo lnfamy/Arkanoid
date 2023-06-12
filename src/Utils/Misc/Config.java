@@ -6,7 +6,7 @@ import java.awt.Color;
  * The type Config. Defines various constants used all throughout the project.
  */
 public final class Config {
-    public static final Color[] COLORS, GREEN_3_COLORS, DIRECT_HIT_COLORS,
+    public static final Color[] BLOCK_COLORS, GREEN_3_COLORS, DIRECT_HIT_COLORS,
             WIDE_EASY_COLORS;
     public static final Color BORDER_CLR, PADDLE_CLR, BG_CLR, DARK_BLUE,
             BALL_CLR, SCORE_BORDER_CLR, K_B, S_B;
@@ -14,9 +14,9 @@ public final class Config {
             WIN_WIDTH, WIN_HEIGHT,
             FPS, MILLI,
             NUM_BORDERS, BORDER_SIZE,
-            FIRST_ROW_Y, NUM_ROWS,
-            BLOCK_WIDTH, BLOCK_HEIGHT, BLOCKS_IN_ROW,
-            NUM_BLOCKS, FIRST_ROW_BLOCKS,
+            FIRST_ROW_Y, G3_NUM_ROWS,
+            BLOCK_WIDTH, BLOCK_HEIGHT, G3_BLOCKS_IN_ROW,
+            G3_NUM_BLOCKS, G3_FIRST_ROW_BLOCKS,
             PADDLE_W, PADDLE_H,
             BALL_SIZE, BALL_SPEED, INIT_BALL_X_PADDING, INIT_BALL_Y_PADDING,
             MID_SCREEN_W, ERR_CODE,
@@ -32,9 +32,10 @@ public final class Config {
             DH_NUM_BALLS;
     public static final int WE_NUM_STARS, WE_NUM_BALLS, WE_NUM_BLOCKS, WE_PADDLE;
 
+    public static final int G3_NUM_BALLS;
 
     static {
-        COLORS = new Color[]{
+        BLOCK_COLORS = new Color[]{
                 new Color(30, 108, 251),
                 new Color(163, 16, 253),
                 new Color(239, 26, 171),
@@ -103,10 +104,6 @@ public final class Config {
         BLOCK_WIDTH = 48;
         BLOCK_HEIGHT = 23;
 
-        NUM_ROWS = 6;
-        BLOCKS_IN_ROW = 12;
-        NUM_BLOCKS = 57;
-        FIRST_ROW_BLOCKS = 12;
 
         PADDLE_W = 90;
         PADDLE_H = 25;
@@ -139,6 +136,13 @@ public final class Config {
         WE_NUM_BLOCKS = 15;
         WE_NUM_BALLS = 10;
         WE_PADDLE = 600;
+
+        //Green 3 constants
+        G3_NUM_BALLS = 2;
+        G3_NUM_ROWS = 5;
+        G3_BLOCKS_IN_ROW = 10;
+        G3_NUM_BLOCKS = 57;
+        G3_FIRST_ROW_BLOCKS = 12;
 
         ERR_CODE = -1;
     }
