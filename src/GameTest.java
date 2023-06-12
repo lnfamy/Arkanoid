@@ -10,7 +10,6 @@ public class GameTest {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        GameLevel game = new GameLevel();
-        game.run();
+
     }
 }

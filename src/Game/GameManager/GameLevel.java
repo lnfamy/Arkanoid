@@ -9,6 +9,7 @@ import Game.Collisions.Listeners.BlockRemover;
 import Game.Collisions.Listeners.ScoreTrackingListener;
 import Game.Levels.DirectHit;
 import Game.Levels.Green3;
+import Game.Levels.LevelInformation;
 import Game.Levels.WideEasy;
 import Game.Menus.PauseScreen;
 import Utils.Misc.Config;
@@ -23,6 +24,7 @@ import Sprites.Sprite;
 import Utils.Misc.Counter;
 import biuoop.DrawSurface;
 import biuoop.GUI;
+import biuoop.KeyboardSensor;
 
 import java.awt.Color;
 import java.util.Random;
@@ -35,12 +37,21 @@ public class GameLevel implements Animation {
     private final GameEnvironment environment = new GameEnvironment();
     private final GUI g = new GUI("Arkanoid", Config.WIN_WIDTH,
             Config.WIN_HEIGHT);
-    private final biuoop.KeyboardSensor keyboard = g.getKeyboardSensor();
+    private final biuoop.KeyboardSensor keyboard;
     private final Counter remainingBlocks = new Counter();
     private final Counter remainingBalls = new Counter();
-    private final Counter score = new Counter();
-    private AnimationRunner runner = new AnimationRunner(this.g);
+    private final Counter score;
+    private AnimationRunner runner;
+    private LevelInformation levelInfo;
     private boolean running;
+
+    public GameLevel(LevelInformation levelInfo, KeyboardSensor keyboard,
+                     AnimationRunner runner, Counter score) {
+        this.runner = runner;
+        this.score = score;
+        this.levelInfo = levelInfo;
+        this.keyboard = keyboard;
+    }
 
     /**
      * Adds collidable to the game.

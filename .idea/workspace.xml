@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b8c1b86-82ad-4b36-b39f-5e334141979e" name="Changes" comment="made backgrounds: direct hit, green 3">
+    <list default="true" id="5b8c1b86-82ad-4b36-b39f-5e334141979e" name="Changes" comment="all backgrounds finished">
+      <change afterPath="$PROJECT_DIR$/src/Game/GameManager/GameFlow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/GameManager/GameLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameManager/GameLevel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Levels/WideEasy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Levels/WideEasy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/Misc/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Misc/Config.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686309320799</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="all backgrounds finished">
+      <created>1686410157118</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1686410157119</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -120,20 +129,12 @@
     <MESSAGE value="supposedly fixed dependencies" />
     <MESSAGE value="added countdown animation" />
     <MESSAGE value="made backgrounds: direct hit, green 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="made backgrounds: direct hit, green 3" />
+    <MESSAGE value="all backgrounds finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="all backgrounds finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/GameTest.java</url>
-          <line>11</line>
-          <properties class="GameTest" method="main">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Animations/CountdownAnimation.java</url>
           <line>45</line>
@@ -145,7 +146,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Game/Levels/WideEasy.java</url>
-          <line>83</line>
+          <line>90</line>
           <properties method="drawOn">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -154,7 +155,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Game/GameManager/GameLevel.java</url>
-          <line>164</line>
+          <line>175</line>
           <properties class="Game.GameManager.GameLevel" method="initBgTest">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -163,7 +164,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Game/Levels/WideEasy.java</url>
-          <line>81</line>
+          <line>88</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

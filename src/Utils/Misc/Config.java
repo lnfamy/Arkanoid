@@ -26,8 +26,8 @@ public final class Config {
             CD_SEC, CD_DURATION, CD_X, CD_Y_OFFSET, CD_SHDW_OFFSET, CD_SIZE,
             CD_SHDW_SIZE;
 
-    public static final int DH_CENTER_Y, DH_R1;
-    public static final int WE_NUM_STARS = 50;
+    public static final int DH_CENTER_Y, DH_R1, DH_BLOCK_SIZE;
+    public static final int WE_NUM_STARS, WE_BALLS, WE_NUM_BLOCKS, WE_PADDLE;
 
 
     static {
@@ -127,6 +127,12 @@ public final class Config {
         //direct hit constants
         DH_CENTER_Y = 190;
         DH_R1 = DH_CENTER_Y - 30;
+        DH_BLOCK_SIZE = 50;
+
+        //Wide Easy constants
+        WE_NUM_STARS = 50;
+        WE_NUM_BLOCKS = 15;
+        WE_BALLS = 10;
 
         ERR_CODE = -1;
     }

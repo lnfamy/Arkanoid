@@ -6,6 +6,8 @@ import Utils.Geometry.Velocity;
 import Utils.Misc.Config;
 import biuoop.DrawSurface;
 
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -18,7 +20,12 @@ public class WideEasy implements LevelInformation {
      */
     private final int[] x = new int[Config.WE_NUM_STARS];
     private final int[] y = new int[Config.WE_NUM_STARS];
+    private final int numBalls = 10;
+    private final int numBlocks = 15;
 
+    /**
+     * Instantiates a new Wide easy.
+     */
     public WideEasy() {
         Random rand = new Random();
         for (int i = 0; i < Config.WE_NUM_STARS; i++) {
@@ -29,7 +36,7 @@ public class WideEasy implements LevelInformation {
 
     @Override
     public int numberOfBalls() {
-        return 0;
+        return this.numBalls;
     }
 
     /**
@@ -49,7 +56,7 @@ public class WideEasy implements LevelInformation {
      */
     @Override
     public int paddleSpeed() {
-        return 0;
+        return 5;
     }
 
     /**
@@ -59,7 +66,7 @@ public class WideEasy implements LevelInformation {
      */
     @Override
     public int paddleWidth() {
-        return 0;
+        return Config.WIN_WIDTH * 8 / 10;
     }
 
     /**
@@ -69,7 +76,7 @@ public class WideEasy implements LevelInformation {
      */
     @Override
     public String levelName() {
-        return null;
+        return "Wide Easy";
     }
 
     /**
@@ -164,17 +171,18 @@ public class WideEasy implements LevelInformation {
                 d.fillRectangle(currX, winRows[3], med2, winRows[5]);
 
                 //adding moon
-                int bigRadius = 70, offset = 5;
+                int bigRadius = 60,
+                        offset = 5,
+                        moonX = width * 5 / 6;
                 int moonLayer = 9;
                 d.setColor(Config.WIDE_EASY_COLORS[moonLayer]);
-                d.fillCircle(width * 4 / 5, 2 * bigRadius, bigRadius);
+                d.fillCircle(moonX, 2 * bigRadius, bigRadius);
                 moonLayer++;
                 d.setColor(Config.WIDE_EASY_COLORS[moonLayer]);
-                d.fillCircle(width * 4 / 5, 2 * bigRadius, bigRadius - offset);
+                d.fillCircle(moonX, 2 * bigRadius, bigRadius - offset);
                 moonLayer++;
                 d.setColor(Config.WIDE_EASY_COLORS[moonLayer]);
-                d.fillCircle(width * 4 / 5, 2 * bigRadius, bigRadius
-                        - 2 * offset);
+                d.fillCircle(moonX, 2 * bigRadius, bigRadius - 2 * offset);
             }
 
             @Override
@@ -191,7 +199,23 @@ public class WideEasy implements LevelInformation {
      */
     @Override
     public List<Block> blocks() {
-        return null;
+        ArrayList<Block> blocks = new ArrayList<>();
+        int blockWidth = Config.WIN_WIDTH / numBlocks;
+        double initX = 0, initY = Config.WIN_HEIGHT * 0.3;
+        Color blockClr = Color.BLACK;
+        for (int i = 0; i < this.numBlocks; i++) {
+            if (i < 2 || i > 12 || (i > 5 && i < 9)) {
+                blockClr = Config.WIDE_EASY_COLORS[11];
+            } else if ((i < 4) || ((i > 10) && (i < 13))) {
+                blockClr = Config.WIDE_EASY_COLORS[5];
+            } else if (i < 6 || i > 9 && i < 12) {
+                blockClr = Config.WIDE_EASY_COLORS[7];
+            }
+            blocks.add(new Block(initX, initY, blockWidth,
+                    Config.BLOCK_HEIGHT, blockClr));
+
+        }
+        return blocks;
     }
 
     /**
@@ -201,6 +225,6 @@ public class WideEasy implements LevelInformation {
      */
     @Override
     public int numberOfBlocksToRemove() {
-        return 0;
+        return blocks().size();
     }
 }
