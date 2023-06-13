@@ -1,9 +1,11 @@
 package Game.Levels;
 
+import Sprites.Ball;
 import Sprites.Block;
 import Sprites.Sprite;
 import Utils.Geometry.Velocity;
 
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -73,4 +75,17 @@ public interface LevelInformation {
      * @return the int
      */
     int numberOfBlocksToRemove();
+
+    void setRemainingBlocks(int remainingBlocks);
+
+    Color PaddleColor();
+
+    Color BorderColor();
+
+    /**
+     * Initial balls list.
+     *
+     * @return a list of the specified level's beginning balls.
+     */
+    List<Ball> initialBalls();
 }

@@ -160,4 +160,8 @@ public class Block implements Collidable, Sprite, HitNotifier {
     public void removeHitListener(HitListener hl) {
         this.hitListeners.remove(hl);
     }
+
+    public Color getColor(){
+        return this.color;
+    }
 }

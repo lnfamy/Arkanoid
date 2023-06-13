@@ -8,6 +8,8 @@ import java.awt.Color;
 public final class Config {
     public static final Color[] BLOCK_COLORS, GREEN_3_COLORS, DIRECT_HIT_COLORS,
             WIDE_EASY_COLORS;
+
+    public static final Color WE_BORDER_CLR, G3_BORDER_CLR, DH_BORDER_CLR;
     public static final Color BORDER_CLR, PADDLE_CLR, BG_CLR, DARK_BLUE,
             BALL_CLR, SCORE_BORDER_CLR, K_B, S_B;
     public static final int
@@ -25,6 +27,8 @@ public final class Config {
             DEATH_REGION_S,
             CD_SEC, CD_DURATION, CD_X, CD_Y_OFFSET, CD_SHDW_OFFSET, CD_SIZE,
             CD_SHDW_SIZE;
+
+    public static final int WIN_CODE = 1, LOSE_CODE = -1;
 
     public static final int ANGLE_DOWN = 0;
 
@@ -77,7 +81,6 @@ public final class Config {
                 new Color(93, 19, 142), // bg city windows
                 Color.black, // foreground city
                 new Color(91, 91, 91), // foreground city windows
-                new Color(252, 213, 138), // lit windows
                 new Color(168, 95, 218), // biggest moon highlight
                 new Color(196, 151, 224), // second moon highlight
                 new Color(241, 219, 255) // moon
@@ -89,7 +92,7 @@ public final class Config {
         MID_SCREEN_W = WIN_WIDTH / 2;
 
         NUM_BORDERS = 4;
-        BORDER_SIZE = 30;
+        BORDER_SIZE = 25;
 
         DEATH_REGION_S = 25;
 
@@ -125,17 +128,19 @@ public final class Config {
         CD_SHDW_SIZE = 270;
 
         //direct hit constants
-        DH_CENTER_Y = 190;
+        DH_CENTER_Y = 180;
         DH_R1 = DH_CENTER_Y - 30;
         DH_BLOCK_SIZE = 50;
         DH_NUM_BLOCKS = 1;
         DH_NUM_BALLS = 1;
+        DH_BORDER_CLR = new Color(138, 76, 3);
 
         //Wide Easy constants
         WE_NUM_STARS = 50;
         WE_NUM_BLOCKS = 15;
         WE_NUM_BALLS = 10;
         WE_PADDLE = 600;
+        WE_BORDER_CLR = new Color(54, 13, 79);
 
         //Green 3 constants
         G3_NUM_BALLS = 2;
@@ -143,6 +148,7 @@ public final class Config {
         G3_BLOCKS_IN_ROW = 10;
         G3_NUM_BLOCKS = 57;
         G3_FIRST_ROW_BLOCKS = 12;
+        G3_BORDER_CLR = new Color(70, 119, 113);
 
         ERR_CODE = -1;
     }

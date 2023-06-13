@@ -25,6 +25,12 @@ public class BallAdder implements HitListener {
         this.remainingBalls = remBalls;
     }
 
+    public BallAdder(GameLevel game, int remBalls){
+        this.game = game;
+        this.remainingBalls = new Counter();
+        this.remainingBalls.increase(remBalls);
+    }
+
     @Override
     public void hitEvent(Block beingHit, Ball hitter) {
         double x = hitter.getX(), y = hitter.getY();

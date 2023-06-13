@@ -1,5 +1,6 @@
 package Game.Levels;
 
+import Sprites.Ball;
 import Sprites.Block;
 import Sprites.Sprite;
 import Utils.Geometry.Velocity;
@@ -21,6 +22,7 @@ public class WideEasy implements LevelInformation {
     private final int[] x = new int[Config.WE_NUM_STARS];
     private final int[] y = new int[Config.WE_NUM_STARS];
     private final int numBlocks = 15;
+    private int remainingBlocks = Config.WE_NUM_BLOCKS;
 
     /**
      * Instantiates a new Wide easy.
@@ -110,8 +112,8 @@ public class WideEasy implements LevelInformation {
                 for (int i = 0; i < starsToDraw; i++) {
                     d.setColor(Config.WIDE_EASY_COLORS[8]);
                     d.fillCircle(x[i], y[i], starRadius);
-                    d.setColor(Config.WIDE_EASY_COLORS[9]);
-                    d.drawCircle(x[i], y[i], starRadius - 1);
+                    d.setColor(Config.WIDE_EASY_COLORS[10]);
+                    d.fillCircle(x[i], y[i], starRadius - 1);
                 }
 
                 d.setColor(Config.WIDE_EASY_COLORS[bgMax]);
@@ -183,7 +185,7 @@ public class WideEasy implements LevelInformation {
                 int bigRadius = 60,
                         offset = 5,
                         moonX = width * 5 / 6;
-                int moonLayer = 9;
+                int moonLayer = 8;
                 d.setColor(Config.WIDE_EASY_COLORS[moonLayer]);
                 d.fillCircle(moonX, 2 * bigRadius, bigRadius);
                 moonLayer++;
@@ -209,18 +211,19 @@ public class WideEasy implements LevelInformation {
     @Override
     public List<Block> blocks() {
         ArrayList<Block> blocks = new ArrayList<>();
-        int blockWidth = Config.WIN_WIDTH / numBlocks;
-        double initX = 0, initY = Config.WIN_HEIGHT * 0.3;
+        int blockWidth = (Config.WIN_WIDTH - Config.BORDER_SIZE*2) / numBlocks;
+        double initX = Config.BORDER_SIZE;
+        double initY = Config.WIN_HEIGHT * 0.3;
         Color blockClr = Color.BLACK;
         for (int i = 0; i < this.numBlocks; i++) {
             if (i < 2 || i > 12 || (i > 5 && i < 9)) {
-                blockClr = Config.WIDE_EASY_COLORS[11];
+                blockClr = Config.WIDE_EASY_COLORS[10];
             } else if ((i < 4) || ((i > 10) && (i < 13))) {
                 blockClr = Config.WIDE_EASY_COLORS[5];
             } else if (i < 6 || i > 9 && i < 12) {
-                blockClr = Config.WIDE_EASY_COLORS[7];
+                blockClr = Config.WIDE_EASY_COLORS[6];
             }
-            blocks.add(new Block(initX, initY, blockWidth,
+            blocks.add(new Block(initX + i * blockWidth, initY, blockWidth,
                     Config.BLOCK_HEIGHT, blockClr));
 
         }
@@ -234,6 +237,42 @@ public class WideEasy implements LevelInformation {
      */
     @Override
     public int numberOfBlocksToRemove() {
-        return blocks().size();
+        return this.remainingBlocks;
+    }
+
+    @Override
+    public void setRemainingBlocks(int remainingBlocks) {
+        this.remainingBlocks = remainingBlocks;
+    }
+
+    @Override
+    public Color PaddleColor() {
+        Random rand = new Random();
+        return Config.WIDE_EASY_COLORS[(int) rand.nextDouble(
+                Config.WIDE_EASY_COLORS.length)];
+    }
+
+    @Override
+    public Color BorderColor() {
+        return Config.WE_BORDER_CLR;
+    }
+
+    @Override
+    public List<Ball> initialBalls() {
+        ArrayList<Ball> balls = new ArrayList<>();
+        int initX = Config.MID_SCREEN_W - Config.INIT_BALL_X_PADDING;
+        int initY = Config.WIN_HEIGHT / 3 + Config.BLOCK_HEIGHT;
+        for (int i = 0; i < Config.WE_NUM_BALLS / 2; i++) {
+            balls.add(new Ball(initX + i * Config.INIT_BALL_X_PADDING,
+                    initY + i * Config.INIT_BALL_Y_PADDING, Config.BALL_SIZE,
+                    Config.BALL_CLR));
+        }
+        for (int i = 0; i < Config.WE_NUM_BALLS / 2; i++) {
+            balls.add(new Ball(initX - i * Config.INIT_BALL_X_PADDING,
+                    initY + i * Config.INIT_BALL_Y_PADDING, Config.BALL_SIZE,
+                    Config.BALL_CLR));
+        }
+
+        return balls;
     }
 }

@@ -27,6 +27,8 @@ import biuoop.GUI;
 import biuoop.KeyboardSensor;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -35,14 +37,14 @@ import java.util.Random;
 public class GameLevel implements Animation {
     private final SpriteCollection sprites = new SpriteCollection();
     private final GameEnvironment environment = new GameEnvironment();
-    private final GUI g = new GUI("Arkanoid", Config.WIN_WIDTH,
-            Config.WIN_HEIGHT);
     private final biuoop.KeyboardSensor keyboard;
     private final Counter remainingBlocks = new Counter();
     private final Counter remainingBalls = new Counter();
     private final Counter score;
     private AnimationRunner runner;
     private LevelInformation levelInfo;
+
+    private int gameStatus = 0;
     private boolean running;
 
     public GameLevel(LevelInformation levelInfo, KeyboardSensor keyboard,
@@ -97,38 +99,22 @@ public class GameLevel implements Animation {
      * paddle, balls and all appropriate hit listeners.
      */
     public void initialize() {
-        /*
-        Initializing all HitListeners:
-            + BlockRemover: HitListener for blocks, in charge of removing a
-            block once it has been hit.
-
-            + BallRemover: HitListener for the DeathRegion block (bottom of
-            game window) and the killing block (randomized location in
-            between all game blocks), in charge of removing a ball once it has
-            hit either the death region or the killing block.
-
-            + BallAdder: HitListener for the special block (randomized
-            location in between all game blocks), in charge of adding another
-             ball once a ball hits it.
-
-            + ScoreTrackingListener: HitListener for all blocks in game. In
-            charge of adding 5 points to the game's score for every block hit.
-         */
-        BlockRemover blockRemover = new BlockRemover(this, remainingBlocks);
-        BallRemover ballRemover = new BallRemover(this, remainingBalls);
+        //initializing level listeners
+        BallRemover ballRemover = new BallRemover(this,
+                levelInfo.numberOfBalls());
+        BlockRemover blockRemover = new BlockRemover(this,
+                this.levelInfo.numberOfBlocksToRemove());
         BallAdder ballAdder = new BallAdder(this,
-                remainingBalls);
-        ScoreTrackingListener sc = new ScoreTrackingListener(score);
-        initDeathRegion(ballRemover);
+                this.levelInfo.numberOfBalls());
+        ScoreTrackingListener sc = new ScoreTrackingListener(this.score);
 
-        //initializing background, score sprite, blocks, paddle and balls
-        //initBg();
-        initBgTest();
+        //initializing all level objects and sprites
+        initBg();
         initScoreBoard();
-//        initBlocks(blockRemover, ballRemover, ballAdder, sc);
-        initPaddle();
         initBalls();
-
+        initPaddle();
+        initDeathRegion(ballRemover);
+        initBlocks(blockRemover, ballRemover, ballAdder, sc);
     }
 
     /**
@@ -136,16 +122,11 @@ public class GameLevel implements Animation {
      * initializes the game borders and the background.
      */
     public void initBg() {
-        /*
-        Background is made using a screen-sized block, which is then added
-        only to the sprite collection and not to the collidables list, to
-        prevent collisions with the background
-        */
-        Block background = new Block(0, 0, Config.WIN_WIDTH,
-                Config.WIN_HEIGHT, Config.BG_CLR);
-        this.addSprite(background);
+        //adding level specific background sprites
+        this.addSprite(this.levelInfo.getBackground());
 
-        Color borderColor = Config.BORDER_CLR;
+        //adding level borders
+        Color borderColor = this.levelInfo.BorderColor();
         int width = Config.WIN_WIDTH,
                 height = Config.WIN_HEIGHT,
                 size = Config.BORDER_SIZE,
@@ -161,7 +142,7 @@ public class GameLevel implements Animation {
         };
 
         /*
-        adding borders to game as both collidable and sprite, but not giving
+        adding borders to game as both collidables and sprites, but not giving
         them hit listeners so that they don't disappear upon collision and
         serve as a frame for the game so the ball doesn't leave the game window
          */
@@ -227,91 +208,19 @@ public class GameLevel implements Animation {
      */
     public void initBlocks(BlockRemover blockRemover, BallRemover ballRemover,
                            BallAdder ballAdder, ScoreTrackingListener score) {
-        Block[][] blocks = new Block[Config.G3_NUM_ROWS][Config.G3_BLOCKS_IN_ROW];
-        int blockW = Config.BLOCK_WIDTH, blockH = Config.BLOCK_HEIGHT;
-        int initHeight = Config.FIRST_ROW_Y;
-        int blocksInRow = Config.G3_FIRST_ROW_BLOCKS;
+        List<Block> blocks = this.levelInfo.blocks();
 
-        /*
-        Killer block / special block implementation:
-        Initializing random variable to randomize the location of the killer
-        block (kBlock) and the special block (sBlock). sBlock and kBlock can
-        appear in the same row, or the same column, but not in the same spot.
+        for (Block b : blocks) {
+            b.addHitListener(score);
+            b.addHitListener(blockRemover);
 
-        sets initial column index value to -1, as it's an impossible index,
-        therefore no killer block will be created before both indexes
-        are initialized.
-         */
-        Random rand = new Random();
-        int kBlockI = (int) rand.nextDouble(Config.G3_NUM_ROWS);
-        int kBlockJ = -1;
-
-        int sBlockI = (int) rand.nextDouble(Config.G3_NUM_ROWS);
-        int sBlockJ = -1;
-
-        /*
-        creates 6 rows of blocks where the first row has 12 blocks, the
-        second one has 11, and so on up until the last row, which has 7
-        blocks -- using nested loops. outer loop is responsible for the rows,
-        where the inner loop is responsible for the columns.
-        */
-        double y = initHeight;
-        for (int i = 0; i < Config.G3_NUM_ROWS; i++) {
-            /*
-            For each inner loop iteration, j goes from blocksInRow to 0. Once
-             the inner loop is done, blocksInRow is decremented by 1 to
-             create the decreasing number of blocks across the rows.
-             */
-            int j = blocksInRow - 1;
-            /*
-            j index of kBlock/sBlock is only computed once we've reached the
-            correct row, as j's max value changes with every row.
-             */
-            if (i == kBlockI) {
-                kBlockJ = (int) rand.nextDouble(j);
-            }
-            if (i == sBlockI) {
-                sBlockJ = (int) rand.nextDouble(j);
-                //if kBlock and jBlock are in the same spot, get new j index
-                if (kBlockI == sBlockI) {
-                    while (sBlockJ == kBlockJ) {
-                        sBlockJ = (int) rand.nextDouble(j);
-                    }
-                }
-            }
-            while (j >= 0) {
-                double x = Config.WIN_WIDTH
-                        - Config.BORDER_SIZE - blockW * (j + 1);
-                /*
-                initialize kBlock, sBlock and all other blocks separately as
-                they have different colors, and kBlock and sBlock have
-                different listeners in addition to blockRemover
-                 */
-                if (j == kBlockJ) {
-                    blocks[i][j] = new Block(x, y, blockW, blockH, Config.K_B);
-                    blocks[i][j].addHitListener(ballRemover);
-                    kBlockJ = -1;
-                } else if (j == sBlockJ) {
-                    blocks[i][j] = new Block(x, y, blockW, blockH, Config.S_B);
-                    blocks[i][j].addHitListener(ballAdder);
-                    sBlockJ = -1;
-                } else {
-                    blocks[i][j] = new Block(x, y, blockW,
-                            blockH, Config.BLOCK_COLORS[i]);
-                }
-                //all blocks have a blockRemover and score listener
-                blocks[i][j].addHitListener(blockRemover);
-                blocks[i][j].addHitListener(score);
-                blocks[i][j].addToGame(this);
-                j--;
-            }
-            //y increases by block height for the next row of blocks.
-            y += blockH;
-            blocksInRow--;
+            /*if (b.getColor() == Config.K_B) {
+                b.addHitListener(ballRemover);
+            } else if (b.getColor() == Config.S_B) {
+                b.addHitListener(ballAdder);
+            }*/
+            b.addToGame(this);
         }
-
-        //setting game blocks counter to initial value
-        this.remainingBlocks.increase(Config.G3_NUM_BLOCKS);
     }
 
     /**
@@ -320,11 +229,13 @@ public class GameLevel implements Animation {
      */
     public void initPaddle() {
         //to place the paddle in the middle of the screen
-        double x = Config.WIN_WIDTH / 2.0 - Config.PADDLE_W / 2.0;
+        double x = (Config.WIN_WIDTH - this.levelInfo.paddleWidth()) * 0.5;
         double y = Config.WIN_HEIGHT - Config.BORDER_SIZE - Config.PADDLE_H;
-        Rectangle rect = new Rectangle(x, y, Config.PADDLE_W, Config.PADDLE_H);
+        Rectangle rect = new Rectangle(x, y, levelInfo.paddleWidth(),
+                Config.PADDLE_H);
 
-        Paddle paddle = new Paddle(rect, Config.PADDLE_CLR, this.keyboard);
+        Paddle paddle = new Paddle(rect, this.levelInfo.PaddleColor(),
+                this.keyboard, this.levelInfo.paddleSpeed());
 
         paddle.addToGame(this);
     }
@@ -337,20 +248,16 @@ public class GameLevel implements Animation {
         double genX = Config.MID_SCREEN_W;
         double y = Config.WIN_HEIGHT - Config.BORDER_SIZE
                 - Config.PADDLE_H * Config.INIT_BALL_Y_PADDING;
-        Ball[] balls = new Ball[]{
-                new Ball(genX, y, Config.BALL_SIZE, Config.BALL_CLR),
-                new Ball(genX + Config.INIT_BALL_X_PADDING, y,
-                        Config.BALL_SIZE, Config.BALL_CLR),
-                new Ball(genX - Config.INIT_BALL_X_PADDING, y,
-                        Config.BALL_SIZE, Config.BALL_CLR),
-        };
 
-        for (Ball b : balls) {
+        List<Ball> balls = levelInfo.initialBalls();
+        List<Velocity> velocities = levelInfo.initialBallVelocities();
+
+        for (int i = 0; i < balls.size(); i++) {
             remainingBalls.increase(1);
-            b.setGameEnvironment(this.environment);
-            b.setVelocity(Velocity
-                    .fromAngleAndSpeed(0, Config.BALL_SPEED));
-            b.addToGame(this);
+            balls.get(i).setGameEnvironment(this.environment);
+            balls.get(i).setVelocity(velocities.get(i));
+            balls.get(i).addToGame(this);
+            this.remainingBalls.increase(1);
         }
     }
 
@@ -393,11 +300,14 @@ public class GameLevel implements Animation {
         this.sprites.drawAllOn(d);
         this.sprites.notifyAllTimePassed();
 
-        boolean finishedGame = this.remainingBlocks.getValue() == 0
-                || this.remainingBalls.getValue() == 0;
-
-        if (finishedGame) {
+        if (this.levelInfo.numberOfBlocksToRemove() == 0) {
             this.running = false;
+            this.gameStatus = Config.WIN_CODE;
+        }
+
+        if (remainingBalls.getValue() == 0) {
+            this.running = false;
+            this.gameStatus = Config.LOSE_CODE;
         }
 
         if (this.keyboard.isPressed("p")) {
@@ -414,5 +324,13 @@ public class GameLevel implements Animation {
     @Override
     public boolean shouldStop() {
         return !this.running;
+    }
+
+    public int getGameStatus() {
+        return this.gameStatus;
+    }
+
+    public LevelInformation getLevelInfo() {
+        return levelInfo;
     }
 }

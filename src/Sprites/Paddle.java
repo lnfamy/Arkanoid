@@ -16,7 +16,7 @@ import java.awt.Color;
 public class Paddle extends Block implements Sprite {
     static final int CHANGE_DIR = -1;
     private final biuoop.KeyboardSensor keyboard;
-    private final int oneStep = 5;
+    private int oneStep = 5;
 
     /**
      * Instantiates a new Sprites.Block.
@@ -28,6 +28,13 @@ public class Paddle extends Block implements Sprite {
     public Paddle(Rectangle rect, Color color, KeyboardSensor keyboard) {
         super(rect, color);
         this.keyboard = keyboard;
+    }
+
+    public Paddle(Rectangle rect, Color color, KeyboardSensor keyboard,
+                  int speed) {
+        super(rect, color);
+        this.keyboard = keyboard;
+        this.oneStep = speed;
     }
 
     /**

@@ -1,5 +1,6 @@
 package Game.Levels;
 
+import Sprites.Ball;
 import Sprites.Block;
 import Sprites.Sprite;
 import Utils.Geometry.Velocity;
@@ -9,11 +10,30 @@ import biuoop.DrawSurface;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * The type Direct hit.
  */
 public class DirectHit implements LevelInformation {
+    private int remainingBlocks = Config.DH_NUM_BLOCKS;
+
+    public void setRemainingBlocks(int remainingBlocks) {
+        this.remainingBlocks = remainingBlocks;
+    }
+
+    @Override
+    public Color PaddleColor() {
+        Random rand = new Random();
+        int index = (int) rand.nextDouble(3) + 1;
+        return Config.DIRECT_HIT_COLORS[index];
+    }
+
+    @Override
+    public Color BorderColor() {
+        return Config.DH_BORDER_CLR;
+    }
+
     /**
      * Number of balls int.
      *
@@ -165,8 +185,12 @@ public class DirectHit implements LevelInformation {
     @Override
     public List<Block> blocks() {
         ArrayList<Block> blocks = new ArrayList<>();
-        blocks.add(new Block(Config.MID_SCREEN_W, Config.DH_CENTER_Y,
-                Config.DH_BLOCK_SIZE, Config.DH_BLOCK_SIZE, Color.RED));
+        int blockSize = Config.DH_BLOCK_SIZE;
+        int xPadding = blockSize / 2;
+        int yPadding = blockSize / 2;
+        blocks.add(new Block(Config.MID_SCREEN_W - xPadding,
+                Config.DH_CENTER_Y - yPadding, blockSize, blockSize,
+                Color.RED));
         return blocks;
     }
 
@@ -177,6 +201,16 @@ public class DirectHit implements LevelInformation {
      */
     @Override
     public int numberOfBlocksToRemove() {
-        return blocks().size();
+        return this.remainingBlocks;
+    }
+
+    @Override
+    public List<Ball> initialBalls() {
+        ArrayList<Ball> balls = new ArrayList<>();
+        balls.add(new Ball(Config.MID_SCREEN_W,
+                Config.WIN_HEIGHT - Config.BORDER_SIZE
+                        - Config.PADDLE_H * Config.INIT_BALL_Y_PADDING,
+                Config.BALL_SIZE, Config.BALL_CLR));
+        return balls;
     }
 }
