@@ -226,42 +226,11 @@ public class Green3 implements LevelInformation {
     public List<Block> blocks() {
         ArrayList<Block> blocks = new ArrayList<>();
         int blockW = Config.BLOCK_WIDTH, blockH = Config.BLOCK_HEIGHT;
-
-        Random rand = new Random();
-        int kBlockI = (int) rand.nextDouble(Config.G3_NUM_ROWS);
-        int kBlockJ = -1;
-
-        int sBlockI = (int) rand.nextDouble(Config.G3_NUM_ROWS);
-        int sBlockJ = -1;
-
         int y = Config.FIRST_ROW_Y;
-
         for (int i = 0; i < Config.G3_NUM_ROWS; i++) {
-            if (i == kBlockI) {
-                kBlockJ = (int) rand.nextDouble(
-                        Config.G3_BLOCKS_IN_ROW - i);
-            }
-            if (i == sBlockI) {
-                sBlockJ = (int) rand.nextDouble(
-                        Config.G3_BLOCKS_IN_ROW - i);
-                if (kBlockI == sBlockI) {
-                    while (kBlockJ == sBlockJ) {
-                        sBlockJ = (int) rand.nextDouble(
-                                Config.G3_BLOCKS_IN_ROW - i);
-                    }
-                }
-            }
-
             for (int j = 0; j < Config.G3_BLOCKS_IN_ROW - i; j++) {
                 int x = Config.WIN_WIDTH - Config.BORDER_SIZE - blockW * (j + 1);
                 Color clr = Config.BLOCK_COLORS[i % Config.BLOCK_COLORS.length];
-                if (i == kBlockI && j == kBlockJ) {
-                    clr = Config.K_B;
-                    kBlockI = -1;
-                } else if (i == sBlockI && j == sBlockJ) {
-                    clr = Config.S_B;
-                    sBlockI = -1;
-                }
                 Block b = new Block(x, y + i * blockH, blockW, blockH, clr);
                 blocks.add(b);
                 this.remainingBlocks++;
