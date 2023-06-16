@@ -171,6 +171,10 @@ public class GameLevel implements Animation {
                 Config.SCORE_BORDER_SIZE);
         ScoreIndicator scoreIndicator = new ScoreIndicator(score, scoreBorder);
         scoreIndicator.addToGame(this);
+
+        LevelNameSprite levelName = new LevelNameSprite(
+                levelInfo.levelName(), scoreBorder);
+        levelName.addToGame(this);
     }
 
 

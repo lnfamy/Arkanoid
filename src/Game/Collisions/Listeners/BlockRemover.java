@@ -33,8 +33,8 @@ public class BlockRemover implements HitListener {
         remove hit listener from block to be removed, remove hit block from
         the game, and decrease the counter for remaining blocks in the game.
          */
-        beingHit.removeHitListener(this);
         beingHit.removeFromGame(game);
+        beingHit.removeHitListener(this);
         remainingBlocks.decrease(1);
         game.getLevelInfo().setRemainingBlocks(remainingBlocks.getValue());
     }

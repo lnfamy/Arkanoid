@@ -17,17 +17,17 @@ public class Game {
     private KeyboardSensor keyboardSensor;
     private AnimationRunner animationRunner;
 
-    public Game(){
+    public Game() {
         this.gui = new GUI("Arkanoid", Config.WIN_WIDTH, Config.WIN_HEIGHT);
         this.keyboardSensor = gui.getKeyboardSensor();
         this.animationRunner = new AnimationRunner(gui);
     }
 
-    public AnimationRunner getAnimationRunner(){
+    public AnimationRunner getAnimationRunner() {
         return this.animationRunner;
     }
 
-    public GUI getGui(){
+    public GUI getGui() {
         return this.gui;
     }
 
@@ -35,7 +35,7 @@ public class Game {
         return keyboardSensor;
     }
 
-    public List<LevelInformation> defaultLevels(){
+    public List<LevelInformation> defaultLevels() {
         ArrayList<LevelInformation> levels = new ArrayList<>();
         levels.add(new DirectHit());
         levels.add(new WideEasy());

@@ -11,6 +11,7 @@ import biuoop.DrawSurface;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -18,10 +19,6 @@ import java.util.List;
  */
 public class Block implements Collidable, Sprite, HitNotifier {
     static final int CHANGE_DIR = -1;
-    static final int LEFT = 0;
-    static final int RIGHT = 1;
-    static final int UP = 2;
-    static final int DOWN = 3;
 
     private final List<HitListener> hitListeners;
     private Rectangle collisionRectangle;
@@ -87,7 +84,7 @@ public class Block implements Collidable, Sprite, HitNotifier {
      */
     public void notifyHit(Ball hitter) {
         // Make a copy of the hitListeners before iterating over them.
-        List<HitListener> listeners = new ArrayList<>(this.hitListeners);
+        List<HitListener> listeners = new LinkedList<>(this.hitListeners);
         // Notify all listeners about a hit event:
         for (HitListener hl : listeners) {
             hl.hitEvent(this, hitter);
@@ -100,14 +97,21 @@ public class Block implements Collidable, Sprite, HitNotifier {
         double dx = currentVelocity.getDx();
         double dy = currentVelocity.getDy();
 
-        int collisionResult = collisionRectangle
-                .whichLineCollided(collisionPoint, currentVelocity);
+        double epsilon = 0.00001;
+        Rectangle rectangle = this.getCollisionRectangle();
+        Point upperLeft = rectangle.getUpperLeft();
+        double xCol = collisionPoint.getX();
+        double yCol = collisionPoint.getY();
 
-        if (collisionResult == UP || collisionResult == DOWN) {
-            dy = dy * CHANGE_DIR;
+        if (Math.abs(xCol - upperLeft.getX()) < epsilon
+                || (Math.abs(xCol - upperLeft.getX() - rectangle.getWidth()))
+                < epsilon) {
+            dx *= CHANGE_DIR;
         }
-        if (collisionResult == LEFT || collisionResult == RIGHT) {
-            dx = dx * CHANGE_DIR;
+        if (Math.abs(yCol - upperLeft.getY()) < epsilon
+                || (Math.abs(yCol - upperLeft.getY() - rectangle.getHeight()))
+                < epsilon) {
+            dy *= CHANGE_DIR;
         }
 
         notifyHit(hitter);
@@ -161,7 +165,12 @@ public class Block implements Collidable, Sprite, HitNotifier {
         this.hitListeners.remove(hl);
     }
 
-    public Color getColor(){
+    /**
+     * Gets color.
+     *
+     * @return the color
+     */
+    public Color getColor() {
         return this.color;
     }
 }
