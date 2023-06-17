@@ -5,7 +5,7 @@ import Utils.Misc.Config;
 import Utils.Misc.Counter;
 import biuoop.DrawSurface;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * Win end screen animation.
