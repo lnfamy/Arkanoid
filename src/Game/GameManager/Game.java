@@ -1,10 +1,7 @@
 package Game.GameManager;
 
 import Animations.AnimationRunner;
-import Game.Levels.DirectHit;
-import Game.Levels.Green3;
-import Game.Levels.LevelInformation;
-import Game.Levels.WideEasy;
+import Game.Levels.*;
 import Utils.Misc.Config;
 import biuoop.GUI;
 import biuoop.KeyboardSensor;
@@ -43,4 +40,5 @@ public class Game {
 
         return levels;
     }
+
 }

@@ -2,6 +2,8 @@ package Game.GameManager;
 
 import Animations.AnimationRunner;
 import Game.Levels.LevelInformation;
+import Game.Menus.GameOver;
+import Game.Menus.YouWin;
 import Utils.Misc.Config;
 import Utils.Misc.Counter;
 import biuoop.GUI;
@@ -38,17 +40,16 @@ public class GameFlow {
             GameLevel level = new GameLevel(levelInfo, this.keyboard,
                     this.runner, this.score);
 
-            level.initialize();
             level.run();
 
             int status = level.getGameStatus();
             if (status == Config.WIN_CODE) {
-                System.out.println("You won!");
+                this.score.increase(Config.CLEAR_SCORE);
             } else if (status == Config.LOSE_CODE) {
-                System.out.println("You lost!");
+                this.runner.run(new GameOver(this.score));
                 return;
             }
-
         }
+        this.runner.run(new YouWin(this.score));
     }
 }

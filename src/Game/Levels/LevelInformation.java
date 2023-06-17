@@ -82,10 +82,4 @@ public interface LevelInformation {
 
     Color BorderColor();
 
-    /**
-     * Initial balls list.
-     *
-     * @return a list of the specified level's beginning balls.
-     */
-    List<Ball> initialBalls();
 }

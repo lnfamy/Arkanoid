@@ -7,7 +7,7 @@ import java.awt.Color;
  */
 public final class Config {
     public static final Color[] BLOCK_COLORS, GREEN_3_COLORS, DIRECT_HIT_COLORS,
-            WIDE_EASY_COLORS;
+            WIDE_EASY_COLORS, G3_BLOCKS_CLR, WE_BLOCKS_CLR;
 
     public static final Color WE_BORDER_CLR, G3_BORDER_CLR, DH_BORDER_CLR;
     public static final Color BORDER_CLR, PADDLE_CLR, BG_CLR, DARK_BLUE,
@@ -30,7 +30,7 @@ public final class Config {
 
     public static final int WIN_CODE = 1, LOSE_CODE = -1;
 
-    public static final int ANGLE_DOWN = 0;
+    public static final int ANGLE_DOWN = 0, ANGLE_UP = 180;
 
     public static final int DH_CENTER_Y, DH_R1, DH_BLOCK_SIZE, DH_NUM_BLOCKS,
             DH_NUM_BALLS;
@@ -72,6 +72,14 @@ public final class Config {
                 new Color(214, 171, 116) //muted yellow
         };
 
+        G3_BLOCKS_CLR = new Color[]{
+                new Color(235, 93, 58), //reddish orange
+                new Color(242, 152, 79), //orange
+                new Color(236, 192, 83), //yellow
+                new Color(21, 167, 149), //deep green
+                new Color(41, 170, 220), //blue
+        };
+
         WIDE_EASY_COLORS = new Color[]{
                 new Color(156, 74, 210), // background gradients:
                 new Color(156, 71, 205),
@@ -84,6 +92,13 @@ public final class Config {
                 new Color(168, 95, 218), // biggest moon highlight
                 new Color(196, 151, 224), // second moon highlight
                 new Color(241, 219, 255) // moon
+        };
+
+        WE_BLOCKS_CLR = new Color[]{
+                new Color(140, 120, 225), //lilac
+                new Color(77, 55, 93), //dark purple
+                new Color(61, 45, 38), //purplish brown
+                new Color(172, 147, 223), //lightest purple
         };
 
         WIN_WIDTH = 800;
@@ -111,7 +126,7 @@ public final class Config {
         PADDLE_W = 90;
         PADDLE_H = 25;
 
-        INIT_BALL_Y_PADDING = 5;
+        INIT_BALL_Y_PADDING = 2;
         INIT_BALL_X_PADDING = BLOCK_WIDTH / 2;
         BALL_SIZE = 5;
         BALL_SPEED = 8;

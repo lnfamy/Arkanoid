@@ -17,7 +17,13 @@ import java.util.Random;
  */
 public class Green3 implements LevelInformation {
     private int remainingBlocks = 0;
-    private int killBlockI, killBlockJ, spBlockI, spBlockJ;
+    private Color randomColor;
+
+    public Green3() {
+        Random rand = new Random();
+        this.randomColor = Config.G3_BLOCKS_CLR[(int) rand.nextDouble(
+                Config.G3_BLOCKS_CLR.length - 1)];
+    }
 
     /**
      * Number of balls int.
@@ -37,10 +43,11 @@ public class Green3 implements LevelInformation {
     @Override
     public List<Velocity> initialBallVelocities() {
         ArrayList<Velocity> velocities = new ArrayList<>();
-        for (int i = 0; i < Config.G3_NUM_BALLS; i++) {
-            velocities.add(Velocity.fromAngleAndSpeed(Config.ANGLE_DOWN,
-                    Config.BALL_SPEED));
-        }
+        velocities.add(Velocity.fromAngleAndSpeed(Config.ANGLE_UP + 45,
+                Config.BALL_SPEED));
+        velocities.add(Velocity.fromAngleAndSpeed(Config.ANGLE_UP - 45,
+                Config.BALL_SPEED));
+
         return velocities;
     }
 
@@ -230,7 +237,7 @@ public class Green3 implements LevelInformation {
         for (int i = 0; i < Config.G3_NUM_ROWS; i++) {
             for (int j = 0; j < Config.G3_BLOCKS_IN_ROW - i; j++) {
                 int x = Config.WIN_WIDTH - Config.BORDER_SIZE - blockW * (j + 1);
-                Color clr = Config.BLOCK_COLORS[i % Config.BLOCK_COLORS.length];
+                Color clr = Config.G3_BLOCKS_CLR[i % Config.G3_BLOCKS_CLR.length];
                 Block b = new Block(x, y + i * blockH, blockW, blockH, clr);
                 blocks.add(b);
                 this.remainingBlocks++;
@@ -256,29 +263,12 @@ public class Green3 implements LevelInformation {
 
     @Override
     public Color PaddleColor() {
-        Random rand = new Random();
-        return Config.GREEN_3_COLORS[(int) rand.nextDouble(
-                Config.GREEN_3_COLORS.length-2)];
+        return this.randomColor;
     }
 
     @Override
     public Color BorderColor() {
-        return Config.G3_BORDER_CLR;
-    }
-
-    @Override
-    public List<Ball> initialBalls() {
-        double genX = Config.MID_SCREEN_W;
-        double y = Config.WIN_HEIGHT - Config.BORDER_SIZE
-                - Config.PADDLE_H * Config.INIT_BALL_Y_PADDING;
-
-        ArrayList<Ball> balls = new ArrayList<>();
-        balls.add(new Ball(genX + Config.INIT_BALL_X_PADDING, y,
-                Config.BALL_SIZE, Config.BALL_CLR));
-        balls.add(new Ball(genX - Config.INIT_BALL_X_PADDING, y,
-                Config.BALL_SIZE, Config.BALL_CLR));
-
-        return balls;
+        return this.randomColor;
     }
 
 }

@@ -54,7 +54,7 @@ public class DirectHit implements LevelInformation {
     @Override
     public List<Velocity> initialBallVelocities() {
         ArrayList<Velocity> velocities = new ArrayList<>();
-        velocities.add(Velocity.fromAngleAndSpeed(Config.ANGLE_DOWN,
+        velocities.add(Velocity.fromAngleAndSpeed(Config.ANGLE_UP,
                 Config.BALL_SPEED));
         return velocities;
     }
@@ -204,13 +204,4 @@ public class DirectHit implements LevelInformation {
         return this.remainingBlocks;
     }
 
-    @Override
-    public List<Ball> initialBalls() {
-        ArrayList<Ball> balls = new ArrayList<>();
-        balls.add(new Ball(Config.MID_SCREEN_W,
-                Config.WIN_HEIGHT - Config.BORDER_SIZE
-                        - Config.PADDLE_H * Config.INIT_BALL_Y_PADDING,
-                Config.BALL_SIZE, Config.BALL_CLR));
-        return balls;
-    }
 }

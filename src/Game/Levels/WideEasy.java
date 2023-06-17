@@ -7,7 +7,7 @@ import Utils.Geometry.Velocity;
 import Utils.Misc.Config;
 import biuoop.DrawSurface;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -21,8 +21,8 @@ public class WideEasy implements LevelInformation {
      */
     private final int[] x = new int[Config.WE_NUM_STARS];
     private final int[] y = new int[Config.WE_NUM_STARS];
-    private final int numBlocks = 15;
     private int remainingBlocks = Config.WE_NUM_BLOCKS;
+    private Color randomColor;
 
     /**
      * Instantiates a new Wide easy.
@@ -33,6 +33,8 @@ public class WideEasy implements LevelInformation {
             x[i] = (int) rand.nextDouble(Config.WIN_WIDTH);
             y[i] = (int) rand.nextDouble(Config.WIN_HEIGHT * 0.6);
         }
+        this.randomColor = Config.WE_BLOCKS_CLR[(int) rand.nextDouble(
+                Config.WE_BLOCKS_CLR.length - 1)];
     }
 
     @Override
@@ -49,13 +51,13 @@ public class WideEasy implements LevelInformation {
     public List<Velocity> initialBallVelocities() {
         ArrayList<Velocity> velocities = new ArrayList<>();
         int ballsFirstHalf = Config.WE_NUM_BALLS / 2;
-        for (int i = 0; i < ballsFirstHalf; i++) {
-            velocities.add(Velocity.fromAngleAndSpeed(
-                    Config.ANGLE_DOWN + i * 5, Config.BALL_SPEED));
+        for (int i = 0, angle = Config.ANGLE_UP;
+             i < ballsFirstHalf; i++, angle += 10) {
+            velocities.add(Velocity.fromAngleAndSpeed(angle, Config.BALL_SPEED));
         }
-        for (int i = ballsFirstHalf; i < Config.WE_NUM_BALLS; i++) {
-            velocities.add(Velocity.fromAngleAndSpeed(
-                    Config.ANGLE_DOWN - i * 5, Config.BALL_SPEED));
+        for (int i = ballsFirstHalf, angle = Config.ANGLE_UP;
+             i < Config.WE_NUM_BALLS; i++, angle -= 10) {
+            velocities.add(Velocity.fromAngleAndSpeed(angle, Config.BALL_SPEED));
         }
         return velocities;
     }
@@ -114,6 +116,8 @@ public class WideEasy implements LevelInformation {
                     d.fillCircle(x[i], y[i], starRadius);
                     d.setColor(Config.WIDE_EASY_COLORS[10]);
                     d.fillCircle(x[i], y[i], starRadius - 1);
+                    d.drawLine(x[i] - 3, y[i], x[i] + 3, y[i]);
+                    d.drawLine(x[i], y[i] - 3, x[i], y[i] + 3);
                 }
 
                 d.setColor(Config.WIDE_EASY_COLORS[bgMax]);
@@ -211,17 +215,20 @@ public class WideEasy implements LevelInformation {
     @Override
     public List<Block> blocks() {
         ArrayList<Block> blocks = new ArrayList<>();
-        int blockWidth = (Config.WIN_WIDTH - Config.BORDER_SIZE*2) / numBlocks;
+        int numBlocks = 15;
+        int blockWidth = (Config.WIN_WIDTH - Config.BORDER_SIZE * 2) / numBlocks;
         double initX = Config.BORDER_SIZE;
         double initY = Config.WIN_HEIGHT * 0.3;
-        Color blockClr = Color.BLACK;
-        for (int i = 0; i < this.numBlocks; i++) {
-            if (i < 2 || i > 12 || (i > 5 && i < 9)) {
-                blockClr = Config.WIDE_EASY_COLORS[10];
-            } else if ((i < 4) || ((i > 10) && (i < 13))) {
-                blockClr = Config.WIDE_EASY_COLORS[5];
-            } else if (i < 6 || i > 9 && i < 12) {
-                blockClr = Config.WIDE_EASY_COLORS[6];
+        Color blockClr;
+        for (int i = 0; i < numBlocks; i++) {
+            if (i < 9 && i > 5) {
+                blockClr = Config.WE_BLOCKS_CLR[3];
+            } else if (i < 2 || i > 12) {
+                blockClr = Config.WE_BLOCKS_CLR[0];
+            } else if (i < 4 || i > 10) {
+                blockClr = Config.WE_BLOCKS_CLR[1];
+            } else {
+                blockClr = Config.WE_BLOCKS_CLR[2];
             }
             blocks.add(new Block(initX + i * blockWidth, initY, blockWidth,
                     Config.BLOCK_HEIGHT, blockClr));
@@ -247,32 +254,11 @@ public class WideEasy implements LevelInformation {
 
     @Override
     public Color PaddleColor() {
-        Random rand = new Random();
-        return Config.WIDE_EASY_COLORS[(int) rand.nextDouble(
-                Config.WIDE_EASY_COLORS.length)];
+        return this.randomColor;
     }
 
     @Override
     public Color BorderColor() {
-        return Config.WE_BORDER_CLR;
-    }
-
-    @Override
-    public List<Ball> initialBalls() {
-        ArrayList<Ball> balls = new ArrayList<>();
-        int initX = Config.MID_SCREEN_W - Config.INIT_BALL_X_PADDING;
-        int initY = Config.WIN_HEIGHT / 3 + Config.BLOCK_HEIGHT;
-        for (int i = 0; i < Config.WE_NUM_BALLS / 2; i++) {
-            balls.add(new Ball(initX + i * Config.INIT_BALL_X_PADDING,
-                    initY + i * Config.INIT_BALL_Y_PADDING, Config.BALL_SIZE,
-                    Config.BALL_CLR));
-        }
-        for (int i = 0; i < Config.WE_NUM_BALLS / 2; i++) {
-            balls.add(new Ball(initX - i * Config.INIT_BALL_X_PADDING,
-                    initY + i * Config.INIT_BALL_Y_PADDING, Config.BALL_SIZE,
-                    Config.BALL_CLR));
-        }
-
-        return balls;
+        return this.randomColor;
     }
 }

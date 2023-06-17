@@ -114,6 +114,7 @@ public class GameLevel implements Animation {
         initBalls();
         initPaddle();
         initDeathRegion(ballRemover);
+//        initGroundTest();
         initBlocks(blockRemover, ballRemover, ballAdder, sc);
     }
 
@@ -196,6 +197,14 @@ public class GameLevel implements Animation {
         deathRegion.addHitListener(ballRemover);
     }
 
+    public void initGroundTest() {
+        Block deathRegion = new Block(0,
+                Config.WIN_HEIGHT + Config.BALL_SIZE,
+                Config.WIN_WIDTH, Config.BORDER_SIZE,
+                Config.BG_CLR);
+        deathRegion.addToGame(this);
+    }
+
     /**
      * Init blocks.
      * Initializes all collidable blocks in game.
@@ -250,17 +259,15 @@ public class GameLevel implements Animation {
      */
     public void initBalls() {
         double genX = Config.MID_SCREEN_W;
-        double y = Config.WIN_HEIGHT - Config.BORDER_SIZE
-                - Config.PADDLE_H * Config.INIT_BALL_Y_PADDING;
+        double y = Config.WIN_HEIGHT - Config.PADDLE_H * 2.5;
 
-        List<Ball> balls = levelInfo.initialBalls();
         List<Velocity> velocities = levelInfo.initialBallVelocities();
 
-        for (int i = 0; i < balls.size(); i++) {
-            remainingBalls.increase(1);
-            balls.get(i).setGameEnvironment(this.environment);
-            balls.get(i).setVelocity(velocities.get(i));
-            balls.get(i).addToGame(this);
+        for (int i = 0; i < this.levelInfo.numberOfBalls(); i++) {
+            Ball b = new Ball(genX, y, Config.BALL_SIZE, Config.BALL_CLR);
+            b.setGameEnvironment(this.environment);
+            b.setVelocity(velocities.get(i));
+            b.addToGame(this);
             this.remainingBalls.increase(1);
         }
     }
@@ -305,13 +312,13 @@ public class GameLevel implements Animation {
         this.sprites.notifyAllTimePassed();
 
         if (this.levelInfo.numberOfBlocksToRemove() == 0) {
-            this.running = false;
             this.gameStatus = Config.WIN_CODE;
+            this.running = false;
         }
 
         if (remainingBalls.getValue() == 0) {
-            this.running = false;
             this.gameStatus = Config.LOSE_CODE;
+            this.running = false;
         }
 
         if (this.keyboard.isPressed("p")) {
@@ -330,10 +337,20 @@ public class GameLevel implements Animation {
         return !this.running;
     }
 
+    /**
+     * Gets game status.
+     *
+     * @return the game status
+     */
     public int getGameStatus() {
         return this.gameStatus;
     }
 
+    /**
+     * Gets level info.
+     *
+     * @return the level info
+     */
     public LevelInformation getLevelInfo() {
         return levelInfo;
     }
