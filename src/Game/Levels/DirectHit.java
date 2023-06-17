@@ -1,6 +1,5 @@
 package Game.Levels;
 
-import Sprites.Ball;
 import Sprites.Block;
 import Sprites.Sprite;
 import Utils.Geometry.Velocity;
@@ -18,19 +17,24 @@ import java.util.Random;
 public class DirectHit implements LevelInformation {
     private int remainingBlocks = Config.DH_NUM_BLOCKS;
 
+    /**
+     * Set remaining blocks.
+     *
+     * @param remainingBlocks the remaining blocks
+     */
     public void setRemainingBlocks(int remainingBlocks) {
         this.remainingBlocks = remainingBlocks;
     }
 
     @Override
-    public Color PaddleColor() {
+    public Color paddleColor() {
         Random rand = new Random();
         int index = (int) rand.nextDouble(3) + 1;
         return Config.DIRECT_HIT_COLORS[index];
     }
 
     @Override
-    public Color BorderColor() {
+    public Color borderColor() {
         return Config.DH_BORDER_CLR;
     }
 

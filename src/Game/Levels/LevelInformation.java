@@ -1,11 +1,10 @@
 package Game.Levels;
 
-import Sprites.Ball;
 import Sprites.Block;
 import Sprites.Sprite;
 import Utils.Geometry.Velocity;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.List;
 
 /**
@@ -76,10 +75,25 @@ public interface LevelInformation {
      */
     int numberOfBlocksToRemove();
 
+    /**
+     * Sets remaining blocks.
+     *
+     * @param remainingBlocks the remaining blocks
+     */
     void setRemainingBlocks(int remainingBlocks);
 
-    Color PaddleColor();
+    /**
+     * Paddle color.
+     *
+     * @return the color
+     */
+    Color paddleColor();
 
-    Color BorderColor();
+    /**
+     * Border color.
+     *
+     * @return the color
+     */
+    Color borderColor();
 
 }

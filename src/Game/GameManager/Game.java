@@ -1,7 +1,10 @@
 package Game.GameManager;
 
 import Animations.AnimationRunner;
-import Game.Levels.*;
+import Game.Levels.LevelInformation;
+import Game.Levels.DirectHit;
+import Game.Levels.WideEasy;
+import Game.Levels.Green3;
 import Utils.Misc.Config;
 import biuoop.GUI;
 import biuoop.KeyboardSensor;
@@ -9,11 +12,14 @@ import biuoop.KeyboardSensor;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Game.
+ */
 public class Game {
-    private GUI gui;
-    private KeyboardSensor keyboardSensor;
-    private AnimationRunner animationRunner;
-    private List<LevelInformation> levelsToRun;
+    private final GUI gui;
+    private final KeyboardSensor keyboardSensor;
+    private final AnimationRunner animationRunner;
+    private final List<LevelInformation> levelsToRun;
 
     /**
      * Instantiates a new Game.

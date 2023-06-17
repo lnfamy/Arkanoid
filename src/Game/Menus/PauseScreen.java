@@ -1,7 +1,10 @@
 package Game.Menus;
 
 import Animations.Animation;
+import Utils.Misc.Config;
 import biuoop.DrawSurface;
+
+import java.awt.Color;
 
 /**
  * The type Pause screen.
@@ -14,8 +17,16 @@ public class PauseScreen implements Animation {
      */
     @Override
     public void doOneFrame(DrawSurface d) {
-        d.drawText(10, d.getHeight() / 2,
-                "paused -- press space to continue", 32);
+        d.setColor(Color.BLACK);
+        d.fillRectangle(0, 0, d.getWidth(), d.getHeight());
+        d.setColor(Color.GRAY);
+        d.drawRectangle(Config.BORDER_SIZE, Config.BORDER_SIZE,
+                d.getWidth() - 2 * Config.BORDER_SIZE,
+                d.getHeight() - 2 * Config.BORDER_SIZE);
+        d.setColor(Color.WHITE);
+        d.drawText(200, d.getHeight() / 2, "PAUSED", Config.BIG_FONT);
+        d.drawText(250, d.getHeight() / 2 + Config.BIG_FONT / 2,
+                "press space to continue", 28);
     }
 
 

@@ -30,6 +30,14 @@ public class Paddle extends Block implements Sprite {
         this.keyboard = keyboard;
     }
 
+    /**
+     * Instantiates a new Paddle.
+     *
+     * @param rect     the rect
+     * @param color    the color
+     * @param keyboard the keyboard
+     * @param speed    the speed
+     */
     public Paddle(Rectangle rect, Color color, KeyboardSensor keyboard,
                   int speed) {
         super(rect, color);

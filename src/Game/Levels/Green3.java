@@ -1,13 +1,12 @@
 package Game.Levels;
 
-import Sprites.Ball;
 import Sprites.Block;
 import Sprites.Sprite;
 import Utils.Geometry.Velocity;
 import Utils.Misc.Config;
 import biuoop.DrawSurface;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -17,8 +16,11 @@ import java.util.Random;
  */
 public class Green3 implements LevelInformation {
     private int remainingBlocks = 0;
-    private Color randomColor;
+    private final Color randomColor;
 
+    /**
+     * Instantiates a new Green 3.
+     */
     public Green3() {
         Random rand = new Random();
         this.randomColor = Config.G3_BLOCKS_CLR[(int) rand.nextDouble(
@@ -106,15 +108,15 @@ public class Green3 implements LevelInformation {
                 currentLayer++;
                 d.setColor(Config.GREEN_3_COLORS[currentLayer]);
                 d.fillCircle(20, y[0], r);
-                d.fillCircle(30 + 1 * 75, y[3], r);
+                d.fillCircle(30 + 75, y[3], r);
                 d.fillCircle((int) (30 + 2.5 * 75), y[0], r);
                 d.fillCircle(30 + 4 * 75, y[4], r);
                 d.fillCircle((int) (30 + 5.5 * 75), y[2], r);
-                d.fillCircle((int) (30 + 7 * 75), y[1], r);
+                d.fillCircle(30 + 7 * 75, y[1], r);
                 d.fillCircle((int) (30 + 8.5 * 75), y[3], r);
-                d.fillCircle((int) (30 + 10 * 75), y[0], r);
+                d.fillCircle(30 + 10 * 75, y[0], r);
                 d.fillRectangle(0, 0, width, y[0]);
-                d.fillRectangle((int) (r), y[0], treeWidth,
+                d.fillRectangle(r, y[0], treeWidth,
                         Math.abs(height - y[0]));
                 d.fillRectangle(width - r * 5, y[0], treeWidth,
                         Math.abs(height - y[0]));
@@ -127,13 +129,13 @@ public class Green3 implements LevelInformation {
                     y[i] = y[i] - 100;
                 }
                 d.fillCircle(20, y[0], r);
-                d.fillCircle(30 + 1 * r, y[0], r);
-                d.fillCircle((int) (2 * r), y[1], r);
+                d.fillCircle(30 + r, y[0], r);
+                d.fillCircle(2 * r, y[1], r);
                 d.fillCircle((int) (30 + 2.5 * r), y[2], (int) (r * 0.75));
                 d.fillCircle((int) (30 + 5.5 * 75), y[2], r);
-                d.fillCircle((int) (30 + 7 * 75), y[1], r);
+                d.fillCircle(30 + 7 * 75, y[1], r);
                 d.fillCircle((int) (30 + 8.5 * 75), y[3], r);
-                d.fillCircle((int) (30 + 10 * 75), y[0], r);
+                d.fillCircle(30 + 10 * 75, y[0], r);
                 d.fillRectangle(0, 0, width, y[0]);
                 d.fillRectangle((int) (r * 1.5), y[0], treeWidth,
                         Math.abs(height - y[0]));
@@ -148,22 +150,22 @@ public class Green3 implements LevelInformation {
                     y[i] = y[i] - 30;
                 }
                 d.fillCircle(20, y[0], r);
-                d.fillCircle(30 + 1 * r, y[0], r);
-                d.fillCircle((int) (2 * r), y[1], r);
+                d.fillCircle(30 + r, y[0], r);
+                d.fillCircle(2 * r, y[1], r);
 //                d.setColor(Color.BLACK);
                 d.fillCircle((int) (30 + 2.5 * r), y[2], (int) (r * 1.25));
 //                d.setColor(Config.GREEN_3_COLORS[currentLayer]);
 
                 d.fillCircle((int) (30 + 5.5 * 75), y[2], r);
-                d.fillCircle((int) (30 + 7 * 75), y[1], r);
+                d.fillCircle(30 + 7 * 75, y[1], r);
                 d.fillCircle((int) (30 + 8.5 * 75), y[3], r);
-                d.fillCircle((int) (30 + 10 * 75), y[0], r);
+                d.fillCircle(30 + 10 * 75, y[0], r);
                 d.fillRectangle(0, 0, width, y[0]);
                 d.fillRectangle((int) (r * 2.5), y[0], treeWidth,
                         Math.abs(height - y[0]));
-                d.fillRectangle((int) (width - r * 3), y[0], treeWidth,
+                d.fillRectangle(width - r * 3, y[0], treeWidth,
                         Math.abs(height - y[0]));
-                d.fillRectangle((int) (width - r / 2), y[0], treeWidth - 20,
+                d.fillRectangle(width - r / 2, y[0], treeWidth - 20,
                         Math.abs(height - y[0]));
 
                 currentLayer++;
@@ -175,14 +177,14 @@ public class Green3 implements LevelInformation {
 
                 treeWidth -= 10;
                 d.fillCircle(20, y[0], r);
-                d.fillCircle(30 + 1 * r, y[2], r);
-                d.fillCircle((int) (30 + 2 * r), y[1], (int) (r * 1.25));
+                d.fillCircle(30 + r, y[2], r);
+                d.fillCircle(30 + 2 * r, y[1], (int) (r * 1.25));
                 d.fillCircle((int) (30 + 3.5 * r), y[3], r);
-                d.fillCircle((int) (30 + 5 * r), y[4], r);
-                d.fillCircle((int) (30 + 6 * r), y[0], r);
+                d.fillCircle(30 + 5 * r, y[4], r);
+                d.fillCircle(30 + 6 * r, y[0], r);
 
                 d.fillRectangle(0, 0, width, y[0]);
-                d.fillRectangle((int) (r / 2), y[0], treeWidth,
+                d.fillRectangle(r / 2, y[0], treeWidth,
                         Math.abs(height - y[0]));
                 d.fillRectangle((int) (width - r * 4.25), y[0], treeWidth,
                         Math.abs(height - y[0]));
@@ -203,12 +205,12 @@ public class Green3 implements LevelInformation {
 
                 d.fillCircle((int) (30 + 5.5 * r), y[0] + 15, (int) (r * 0.75));
                 d.fillCircle((int) (30 + 4.5 * r), y[0], r);
-                d.fillCircle((int) (30 + 6 * r), y[0], (int) (r));
+                d.fillCircle(30 + 6 * r, y[0], r);
 
                 d.fillCircle((int) (30 + 7.5 * r), y[0], (int) (r * 1.25));
                 d.fillCircle((int) (30 + 8.5 * r), y[0], r);
                 d.fillRectangle(0, 0, width, y[2]);
-                d.fillRectangle((int) (r), y[0], treeWidth,
+                d.fillRectangle(r, y[0], treeWidth,
                         Math.abs(height - y[0]));
                 d.fillRectangle(width - r * 5, y[0], treeWidth,
                         Math.abs(height - y[0]));
@@ -262,12 +264,12 @@ public class Green3 implements LevelInformation {
     }
 
     @Override
-    public Color PaddleColor() {
+    public Color paddleColor() {
         return this.randomColor;
     }
 
     @Override
-    public Color BorderColor() {
+    public Color borderColor() {
         return this.randomColor;
     }
 

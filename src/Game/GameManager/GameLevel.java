@@ -4,14 +4,10 @@ import Animations.Animation;
 import Animations.AnimationRunner;
 import Animations.CountdownAnimation;
 import Animations.KeyPressStoppableAnimation;
-import Game.Collisions.Listeners.BallAdder;
 import Game.Collisions.Listeners.BallRemover;
 import Game.Collisions.Listeners.BlockRemover;
 import Game.Collisions.Listeners.ScoreTrackingListener;
-import Game.Levels.DirectHit;
-import Game.Levels.Green3;
 import Game.Levels.LevelInformation;
-import Game.Levels.WideEasy;
 import Game.Menus.PauseScreen;
 import Utils.Misc.Config;
 import Sprites.Ball;
@@ -38,12 +34,20 @@ public class GameLevel implements Animation {
     private final biuoop.KeyboardSensor keyboard;
     private final Counter remainingBalls, remainingBlocks;
     private final Counter score;
-    private AnimationRunner runner;
-    private LevelInformation levelInfo;
+    private final AnimationRunner runner;
+    private final LevelInformation levelInfo;
 
     private int gameStatus = 0;
     private boolean running;
 
+    /**
+     * Instantiates a new Game level.
+     *
+     * @param levelInfo the level info
+     * @param keyboard  the keyboard
+     * @param runner    the runner
+     * @param score     the score
+     */
     public GameLevel(LevelInformation levelInfo, KeyboardSensor keyboard,
                      AnimationRunner runner, Counter score) {
         this.runner = runner;
@@ -103,8 +107,6 @@ public class GameLevel implements Animation {
                 this.remainingBalls);
         BlockRemover blockRemover = new BlockRemover(this,
                 remainingBlocks);
-        BallAdder ballAdder = new BallAdder(this,
-                this.levelInfo.numberOfBalls());
         ScoreTrackingListener sc = new ScoreTrackingListener(this.score);
 
         //initializing all level objects and sprites
@@ -114,7 +116,7 @@ public class GameLevel implements Animation {
         initPaddle();
         //initGroundTest();
         initDeathRegion(ballRemover);
-        initBlocks(blockRemover, ballRemover, ballAdder, sc);
+        initBlocks(blockRemover, sc);
     }
 
     /**
@@ -126,7 +128,7 @@ public class GameLevel implements Animation {
         this.addSprite(this.levelInfo.getBackground());
 
         //adding level borders
-        Color borderColor = this.levelInfo.BorderColor();
+        Color borderColor = this.levelInfo.borderColor();
         int width = Config.WIN_WIDTH,
                 height = Config.WIN_HEIGHT,
                 size = Config.BORDER_SIZE,
@@ -149,16 +151,6 @@ public class GameLevel implements Animation {
         for (Block b : borders) {
             b.addToGame(this);
         }
-    }
-
-    /**
-     * Init bg test.
-     */
-    public void initBgTest() {
-        DirectHit dh = new DirectHit();
-        Green3 g = new Green3();
-        WideEasy w = new WideEasy();
-        this.addSprite(w.getBackground());
     }
 
     /**
@@ -195,30 +187,17 @@ public class GameLevel implements Animation {
         deathRegion.addToGame(this);
     }
 
-    public void initGroundTest() {
-        Block deathRegion = new Block(0,
-                Config.WIN_HEIGHT + Config.BALL_SIZE,
-                Config.WIN_WIDTH, Config.BORDER_SIZE,
-                Config.BG_CLR);
-        deathRegion.addToGame(this);
-    }
-
     /**
      * Init blocks.
      * Initializes all collidable blocks in game.
      *
      * @param blockRemover the block remover listener, removes blocks upon
      *                     collision with a ball.
-     * @param ballRemover  the ball remover listener, removes a ball upon
-     *                     collision with the death region block or the
-     *                     killer block
-     * @param ballAdder    the ball adder listener, adds a ball upon
-     *                     collision with the special block
      * @param score        the score tracking listener, adds 5 points to the
      *                     score counter for every block removed
      */
-    public void initBlocks(BlockRemover blockRemover, BallRemover ballRemover,
-                           BallAdder ballAdder, ScoreTrackingListener score) {
+    public void initBlocks(BlockRemover blockRemover,
+                           ScoreTrackingListener score) {
         List<Block> blocks = this.levelInfo.blocks();
 
         for (Block b : blocks) {
@@ -240,7 +219,7 @@ public class GameLevel implements Animation {
         Rectangle rect = new Rectangle(x, y, levelInfo.paddleWidth(),
                 Config.PADDLE_H);
 
-        Paddle paddle = new Paddle(rect, this.levelInfo.PaddleColor(),
+        Paddle paddle = new Paddle(rect, this.levelInfo.paddleColor(),
                 this.keyboard, this.levelInfo.paddleSpeed());
 
         paddle.addToGame(this);

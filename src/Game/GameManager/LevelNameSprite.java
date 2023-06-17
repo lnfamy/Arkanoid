@@ -11,8 +11,8 @@ import java.awt.Color;
  * The type Level name sprite.
  */
 public class LevelNameSprite implements Sprite {
-    private String name;
-    private Rectangle rect;
+    private final String name;
+    private final Rectangle rect;
 
     /**
      * Instantiates a new Level name sprite.

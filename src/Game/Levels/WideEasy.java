@@ -1,6 +1,5 @@
 package Game.Levels;
 
-import Sprites.Ball;
 import Sprites.Block;
 import Sprites.Sprite;
 import Utils.Geometry.Velocity;
@@ -22,7 +21,7 @@ public class WideEasy implements LevelInformation {
     private final int[] x = new int[Config.WE_NUM_STARS];
     private final int[] y = new int[Config.WE_NUM_STARS];
     private int remainingBlocks = Config.WE_NUM_BLOCKS;
-    private Color randomColor;
+    private final Color randomColor;
 
     /**
      * Instantiates a new Wide easy.
@@ -253,12 +252,12 @@ public class WideEasy implements LevelInformation {
     }
 
     @Override
-    public Color PaddleColor() {
+    public Color paddleColor() {
         return this.randomColor;
     }
 
     @Override
-    public Color BorderColor() {
+    public Color borderColor() {
         return this.randomColor;
     }
 }

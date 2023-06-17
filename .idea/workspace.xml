@@ -4,17 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b8c1b86-82ad-4b36-b39f-5e334141979e" name="Changes" comment="- fixed bug (it was that I initialized each level twice).&#10;- about to add KeyPressStoppableAnimation class">
-      <change afterPath="$PROJECT_DIR$/src/Animations/KeyPressStoppableAnimation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Ass6Game.java" afterDir="false" />
+    <list default="true" id="5b8c1b86-82ad-4b36-b39f-5e334141979e" name="Changes" comment="- done with the assignment&#10;- about to yassify end screens and pause screen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Collisions/Listeners/BallRemover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Collisions/Listeners/BallRemover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Collisions/Listeners/BlockRemover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Collisions/Listeners/BlockRemover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Animations/KeyPressStoppableAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Animations/KeyPressStoppableAnimation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Collisions/Listeners/BallAdder.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/GameManager/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameManager/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/GameManager/GameFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameManager/GameFlow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/GameManager/GameLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameManager/GameLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/GameManager/LevelNameSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameManager/LevelNameSprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Levels/DirectHit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Levels/DirectHit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Levels/Green3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Levels/Green3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Levels/LevelInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Levels/LevelInformation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Levels/WideEasy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Levels/WideEasy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Menus/GameOver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Menus/GameOver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Menus/PauseScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Menus/PauseScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Menus/YouWin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Menus/YouWin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sprites/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sprites/Paddle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/Misc/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Misc/Config.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +86,7 @@
     <configuration name="Ass6Game" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Ass6Game" />
       <module name="ass6" />
-      <option name="PROGRAM_PARAMETERS" value="2 1 2 1" />
+      <option name="PROGRAM_PARAMETERS" value="1" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -176,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686993809866</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="- done with the assignment&#10;- about to yassify end screens and pause screen">
+      <created>1686998235913</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1686998235913</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,28 +216,20 @@
     <MESSAGE value="commit before revising GameLevel's initialize method" />
     <MESSAGE value="about to remove backgrounds to check if they're causing bugs" />
     <MESSAGE value="- fixed bug (it was that I initialized each level twice).&#10;- about to add KeyPressStoppableAnimation class" />
-    <option name="LAST_COMMIT_MESSAGE" value="- fixed bug (it was that I initialized each level twice).&#10;- about to add KeyPressStoppableAnimation class" />
+    <MESSAGE value="- done with the assignment&#10;- about to yassify end screens and pause screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="- done with the assignment&#10;- about to yassify end screens and pause screen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Game/Levels/WideEasy.java</url>
-          <line>103</line>
+          <line>102</line>
           <properties method="drawOn">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Game/GameManager/GameLevel.java</url>
-          <line>156</line>
-          <properties class="Game.GameManager.GameLevel" method="initBgTest">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Game/GameManager/GameFlow.java</url>
@@ -238,7 +242,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Game/Levels/WideEasy.java</url>
-          <line>101</line>
+          <line>100</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

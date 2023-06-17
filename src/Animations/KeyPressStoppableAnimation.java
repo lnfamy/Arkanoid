@@ -7,9 +7,9 @@ import biuoop.KeyboardSensor;
  * The type Key press stoppable animation.
  */
 public class KeyPressStoppableAnimation implements Animation {
-    private KeyboardSensor keyboardSensor;
-    private String key;
-    private Animation animation;
+    private final KeyboardSensor keyboardSensor;
+    private final String key;
+    private final Animation animation;
     private boolean pressed = true;
     private boolean running = true;
 

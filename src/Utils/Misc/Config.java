@@ -28,9 +28,9 @@ public final class Config {
             CD_SEC, CD_DURATION, CD_X, CD_Y_OFFSET, CD_SHDW_OFFSET, CD_SIZE,
             CD_SHDW_SIZE;
 
-    public static final int WIN_CODE = 1, LOSE_CODE = -1;
-
-    public static final int ANGLE_DOWN = 0, ANGLE_UP = 180;
+    public static final int WIN_CODE = 1, LOSE_CODE = -1,
+            ANGLE_UP = 180,
+            BIG_FONT = 100;
 
     public static final int DH_CENTER_Y, DH_R1, DH_BLOCK_SIZE, DH_NUM_BLOCKS,
             DH_NUM_BALLS;
