@@ -4,18 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b8c1b86-82ad-4b36-b39f-5e334141979e" name="Changes" comment="about to remove backgrounds to check if they're causing bugs">
-      <change afterPath="$PROJECT_DIR$/src/Game/Menus/GameOver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Menus/YouWin.java" afterDir="false" />
+    <list default="true" id="5b8c1b86-82ad-4b36-b39f-5e334141979e" name="Changes" comment="- fixed bug (it was that I initialized each level twice).&#10;- about to add KeyPressStoppableAnimation class">
+      <change afterPath="$PROJECT_DIR$/src/Animations/KeyPressStoppableAnimation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Ass6Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Collisions/Listeners/BallRemover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Collisions/Listeners/BallRemover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Collisions/Listeners/BlockRemover.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Collisions/Listeners/BlockRemover.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/GameManager/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameManager/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/GameManager/GameFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameManager/GameFlow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/GameManager/GameLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/GameManager/GameLevel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Levels/DirectHit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Levels/DirectHit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Levels/Green3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Levels/Green3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Levels/LevelInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Levels/LevelInformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Levels/WideEasy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Levels/WideEasy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Misc/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Misc/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Menus/PauseScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Menus/PauseScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,9 +78,10 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="GameTest" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="GameTest" />
+    <configuration name="Ass6Game" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Ass6Game" />
       <module name="ass6" />
+      <option name="PROGRAM_PARAMETERS" value="2 1 2 1" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -169,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686910524573</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="- fixed bug (it was that I initialized each level twice).&#10;- about to add KeyPressStoppableAnimation class">
+      <created>1686993809866</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1686993809866</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,7 +203,8 @@
     <MESSAGE value="Implemented inherited methods for WideEasy" />
     <MESSAGE value="commit before revising GameLevel's initialize method" />
     <MESSAGE value="about to remove backgrounds to check if they're causing bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="about to remove backgrounds to check if they're causing bugs" />
+    <MESSAGE value="- fixed bug (it was that I initialized each level twice).&#10;- about to add KeyPressStoppableAnimation class" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fixed bug (it was that I initialized each level twice).&#10;- about to add KeyPressStoppableAnimation class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -212,7 +220,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Game/GameManager/GameLevel.java</url>
-          <line>157</line>
+          <line>156</line>
           <properties class="Game.GameManager.GameLevel" method="initBgTest">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -221,7 +229,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Game/GameManager/GameFlow.java</url>
-          <line>37</line>
+          <line>48</line>
           <properties class="Game.GameManager.GameFlow" method="runLevels">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

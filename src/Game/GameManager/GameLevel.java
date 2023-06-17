@@ -3,6 +3,7 @@ package Game.GameManager;
 import Animations.Animation;
 import Animations.AnimationRunner;
 import Animations.CountdownAnimation;
+import Animations.KeyPressStoppableAnimation;
 import Game.Collisions.Listeners.BallAdder;
 import Game.Collisions.Listeners.BallRemover;
 import Game.Collisions.Listeners.BlockRemover;
@@ -23,13 +24,10 @@ import Utils.Geometry.Velocity;
 import Sprites.Sprite;
 import Utils.Misc.Counter;
 import biuoop.DrawSurface;
-import biuoop.GUI;
 import biuoop.KeyboardSensor;
 
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * The type GameLevel.
@@ -38,8 +36,7 @@ public class GameLevel implements Animation {
     private final SpriteCollection sprites = new SpriteCollection();
     private final GameEnvironment environment = new GameEnvironment();
     private final biuoop.KeyboardSensor keyboard;
-    private final Counter remainingBlocks = new Counter();
-    private final Counter remainingBalls = new Counter();
+    private final Counter remainingBalls, remainingBlocks;
     private final Counter score;
     private AnimationRunner runner;
     private LevelInformation levelInfo;
@@ -53,6 +50,8 @@ public class GameLevel implements Animation {
         this.score = score;
         this.levelInfo = levelInfo;
         this.keyboard = keyboard;
+        this.remainingBalls = new Counter();
+        this.remainingBlocks = new Counter();
     }
 
     /**
@@ -101,9 +100,9 @@ public class GameLevel implements Animation {
     public void initialize() {
         //initializing level listeners
         BallRemover ballRemover = new BallRemover(this,
-                levelInfo.numberOfBalls());
+                this.remainingBalls);
         BlockRemover blockRemover = new BlockRemover(this,
-                this.levelInfo.numberOfBlocksToRemove());
+                remainingBlocks);
         BallAdder ballAdder = new BallAdder(this,
                 this.levelInfo.numberOfBalls());
         ScoreTrackingListener sc = new ScoreTrackingListener(this.score);
@@ -113,8 +112,8 @@ public class GameLevel implements Animation {
         initScoreBoard();
         initBalls();
         initPaddle();
+        //initGroundTest();
         initDeathRegion(ballRemover);
-//        initGroundTest();
         initBlocks(blockRemover, ballRemover, ballAdder, sc);
     }
 
@@ -190,11 +189,10 @@ public class GameLevel implements Animation {
      */
     public void initDeathRegion(BallRemover ballRemover) {
         Block deathRegion = new Block(0,
-                Config.WIN_HEIGHT + Config.BALL_SIZE,
-                Config.WIN_WIDTH, Config.BORDER_SIZE,
+                Config.WIN_HEIGHT, Config.WIN_WIDTH, Config.BORDER_SIZE,
                 Config.BG_CLR);
-        deathRegion.addToGame(this);
         deathRegion.addHitListener(ballRemover);
+        deathRegion.addToGame(this);
     }
 
     public void initGroundTest() {
@@ -226,12 +224,7 @@ public class GameLevel implements Animation {
         for (Block b : blocks) {
             b.addHitListener(score);
             b.addHitListener(blockRemover);
-
-            /*if (b.getColor() == Config.K_B) {
-                b.addHitListener(ballRemover);
-            } else if (b.getColor() == Config.S_B) {
-                b.addHitListener(ballAdder);
-            }*/
+            this.remainingBlocks.increase(1);
             b.addToGame(this);
         }
     }
@@ -322,7 +315,8 @@ public class GameLevel implements Animation {
         }
 
         if (this.keyboard.isPressed("p")) {
-            this.runner.run(new PauseScreen(this.keyboard));
+            this.runner.run(new KeyPressStoppableAnimation(this.keyboard,
+                    "space", new PauseScreen()));
         }
 
     }

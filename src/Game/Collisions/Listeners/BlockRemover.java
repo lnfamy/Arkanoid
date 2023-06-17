@@ -21,12 +21,6 @@ public class BlockRemover implements HitListener {
         this.remainingBlocks = removedBlocks;
     }
 
-    public BlockRemover(GameLevel game, int remainingBlocks) {
-        this.game = game;
-        this.remainingBlocks = new Counter();
-        this.remainingBlocks.increase(remainingBlocks);
-    }
-
     @Override
     public void hitEvent(Block beingHit, Ball hitter) {
         /*

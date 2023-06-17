@@ -10,7 +10,7 @@ import Sprites.Block;
  */
 public class BallRemover implements HitListener {
     private final GameLevel game;
-    private final Counter remainingBalls = new Counter();
+    private final Counter remainingBalls;
 
     /**
      * Instantiates a new Ball remover.
@@ -18,9 +18,9 @@ public class BallRemover implements HitListener {
      * @param game           the game
      * @param remainingBalls the remaining balls in the game
      */
-    public BallRemover(GameLevel game, int remainingBalls) {
+    public BallRemover(GameLevel game, Counter remainingBalls) {
         this.game = game;
-        this.remainingBalls.increase(remainingBalls);
+        this.remainingBalls = remainingBalls;
 
     }
 
